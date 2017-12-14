@@ -53,6 +53,7 @@
       <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jquery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
+<script src="plugins/jQueryUI/jquery-ui.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap bootbox -->
 <script src="plugins/bootbox/bootbox.js"></script>
@@ -103,7 +104,6 @@
       </div>
     
       <!-- ./wrapper -->
-      <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
       <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
      <script>
          $.widget.bridge('uibutton', $.ui.button);
@@ -186,7 +186,5 @@ $(".select2").select2({
 <script src="plugins/fastclick/fastclick.min.js"></script>
 <script src="plugins/JqueryConfirm/js/jquery-confirm.js"></script>
  <!-- -->
-    
-      
-   </body>
+</body>
 </html>

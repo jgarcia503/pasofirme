@@ -41,6 +41,9 @@ if ($params['tipo'] == 'material') {
 		$subtotal = floatval($params['costo_deterioro']*$params['horas_uso']);
 		$response = array('success'=>true, 'subtotal'=>$subtotal);
 	}
+}elseif ($params['tipo'] == 'mano de obra') {
+	$subtotal = floatval($params['precio_hora']*$params['cantidad']);
+	$response = array('success'=>true, 'subtotal'=>$subtotal);
 }
 echo json_encode($response);
 ?>

@@ -18,7 +18,7 @@ if ($params["txtusuario"] === "" || $params["txtusuario"] === null || trim($para
     if ($response["success"] == true) {
         if ($response["total"] > 0) {
             if ($response["items"][0]["estado"] == "Activo") {
-                $_SESSION["helpdesk"] = true;
+                $_SESSION["pasofirme"] = true;
                 $_SESSION["login"] = true;
                 $_SESSION["id"] = $response["items"][0]["id"];
                 $_SESSION["nombre"] = $response["items"][0]["nombre"];

@@ -26,7 +26,7 @@ if (isset($conf[$modulo]['layout'])) {
         include($path_layout);
     }
 } else {
-    if (isset($_SESSION['helpdesk'])) {
+    if (isset($_SESSION['pasofirme'])) {
         $modulo = 'error';
         $path_layout = LAYOUT_PATH . '/' . $conf[$modulo]['layout'];
         include($path_layout);

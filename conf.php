@@ -6,7 +6,7 @@ define('LAYOUT_DESKTOP', 'desktop.php');
 define('MODULO_PATH', realpath('modulos'));
 define('LAYOUT_PATH', realpath('plantillas'));
 
-if (isset($_SESSION['helpdesk'])) {
+if (isset($_SESSION['pasofirme'])) {
    if ($_SESSION['tipo']=='admin'){
         include("modulos/permisos/administrador.php");
     }

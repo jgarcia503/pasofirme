@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla" class="datatable table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tabla_proyecto" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -67,7 +67,7 @@
                         <!-- Lleva a la pantalla de ingreso de las actividades, envio de ID por formulario -->
                           <form action="?mod=actividades" method="POST">
                               <input type="hidden" name="proyecto_id" value="<?php echo $datos['id_proyecto'] ?>">
-                              <button type="submit" class="btn btn-primary btn-xs">Actividades</button>
+                              <button type="submit" class="btn btn-primary btn-xs" data-toggle='tooltip' title="Actividades sin cerrar">Actividades</button>
                           </form>
                         <?php } ?>
                     </center></td>
@@ -81,7 +81,7 @@
                     </center></td>
                     <td><center>
                         <!-- Muestra la informacion del proyecto -->
-                        <a name="detalle" style="color: #0629F6;" data-toggle='modal' data-target='#modal_proyecto' onclick="detalle_siembra('<?php echo $datos['nombre_proyecto']?>','<?php echo $datos['fecha_inicio']?>','<?php echo $datos['fecha_fin']?>','<?php echo $datos['cerrado']?>','<?php echo $datos['nombre']?>','<?php echo $datos['correlativo_proyecto']?>','<?php echo $datos['nombre_bodega']?>','<?php echo $datos['nombre_vegetacion']?>','<?php echo $datos['notas']?>');"><i class="fa fa-eye"></i></a>
+                        <a name="detalle" style="color: #0629F6;" id="detalle_proyecto" data-toggle='tooltip' title="Detalle del proyecto" onclick="detalle_siembra('<?php echo $datos['nombre_proyecto']?>','<?php echo $datos['fecha_inicio']?>','<?php echo $datos['fecha_fin']?>','<?php echo $datos['cerrado']?>','<?php echo $datos['nombre']?>','<?php echo $datos['correlativo_proyecto']?>','<?php echo $datos['nombre_bodega']?>','<?php echo $datos['nombre_vegetacion']?>','<?php echo $datos['notas']?>');"><i class="fa fa-eye"></i></a>
                     </center></td>
                   </tr>
                   <?php  
@@ -210,6 +210,12 @@ $(document).ready(function(){
   $('#modal_proyecto').on('hidden.bs.modal', function (e) {
         $('[name=detalle]').blur();
     });
+  $("#tabla_proyecto").dataTable({                
+      "sPaginationType": "full_numbers"
+  });
+  $("#detalle_proyecto").on('click', function(){
+    $('#modal_proyecto').modal('show');
+  })
 });
 
 function detalle_siembra(nproyecto, finicio, ffin, pcerrado, ntablon, cproyecto, nbodega, ncultivo, notas) {

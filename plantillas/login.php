@@ -1,7 +1,7 @@
 <?php
 @session_start();
-if (isset($_SESSION['helpdesk'])) {
-    if ($_SESSION['helpdesk'] == true && $_SESSION['login'] == false) {
+if (isset($_SESSION['pasofirme'])) {
+    if ($_SESSION['pasofirme'] == true && $_SESSION['login'] == false) {
         header("Location:?mod=inicio");
     } else {
         header("Location:?mod=login");
