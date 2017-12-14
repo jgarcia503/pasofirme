@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    <i class="fa fa-user"></i>&nbsp;Usuarios
+    <i class="fa fa-user"></i>&nbsp;Registro de usuarios
   </h1>
   <ol class="breadcrumb">
     <li><a href="?mod=inicio"><i class="fa fa-home"></i>&nbsp;Inicio</a></li>
@@ -16,6 +16,9 @@
 <section class="content">
   <div class="row">
       <div class="box box-primary">
+        <div class="box-header with-border">
+          <h5><a href="?mod=iusuarios" class="fa fa-plus-circle" style="color: #0C0303;">&nbsp;Ingresar usuario</a></h5>
+        </div>
         <!-- /.box-header -->
         <div class="box-body">
              <table id="tabla" class="datatable table table-bordered table-responsive table-stripped table-hover table-condensed">
@@ -64,21 +67,21 @@
                     <td class="center"><center>
                         <?php if ($datos['estado'] == 'Activo' OR $datos['estado'] == 'Inactivo') { ?>
                             <form action="?mod=musuarios" method="POST">
-                                <a class="btn btn-success" data-toggle='modal' data-target='#datos_usuario' onclick="datos_usuario('<?php echo $datos['nombre'] ?>','<?php echo $datos['correo'] ?>','<?php echo $datos['telefono'] ?>','<?php echo $datos['usuario'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-info-circle"></i>
+                                <a class="btn btn-success" id="iusuario" data-toggle='tooltip' title="Informaci&oacute;n del usuario" onclick="datos_usuario('<?php echo $datos['nombre'] ?>','<?php echo $datos['correo'] ?>','<?php echo $datos['telefono'] ?>','<?php echo $datos['usuario'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-info-circle"></i>
                                 </a>
                                 <a class="btn btn-warning" href="#" onclick="reset_pass('<?php echo $datos['id'] ?>');"><i class="fa white fa-lock"></i>
                                 </a>
-                                <a class="btn btn-danger" href="#" data-toggle='modal' data-target='#modal_usuario' onclick="modificar_estado('<?php echo $datos['id'] ?>', '<?php echo $datos['nombre'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-retweet"></i>
+                                <a class="btn btn-danger" href="#" id="musuario" data-toggle='tooltip' title="Estado del usuario" onclick="modificar_estado('<?php echo $datos['id'] ?>', '<?php echo $datos['nombre'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-retweet"></i>
                                 </a>
                                 <input type="hidden" name="id" value="<?php echo $datos['id'] ?>">
-                                <button type="submit" class="btn btn-info"><i class="fa white fa-pencil-square-o"></i></button>
+                                <button type="submit" class="btn btn-info" data-toggle='tooltip' title="Modificar datos del usuario"><i class="fa white fa-pencil-square-o"></i></button>
                             </form>
                         <?php }else{ ?>
                             <form action="?mod=musuarios" method="POST">
-                                <a class="btn btn-success" data-toggle='modal' data-target='#datos_usuario' onclick="datos_usuario('<?php echo $datos['nombre'] ?>','<?php echo $datos['correo'] ?>','<?php echo $datos['telefono'] ?>','<?php echo $datos['usuario'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-info-circle"></i>
+                                <a class="btn btn-success" data-toggle='tooltip' title="Informaci&oacute;n del usuario" onclick="datos_usuario('<?php echo $datos['nombre'] ?>','<?php echo $datos['correo'] ?>','<?php echo $datos['telefono'] ?>','<?php echo $datos['usuario'] ?>','<?php echo $datos['estado'] ?>');"><i class="fa white fa-info-circle"></i>
                                 </a>
                                 <input type="hidden" name="id" value="<?php echo $datos['id'] ?>">
-                                <button type="submit" class="btn btn-info"><i class="fa white fa-pencil-square-o"></i></button>
+                                <button type="submit" class="btn btn-info" data-toggle='tooltip' title="Modificar datos del usuario"><i class="fa white fa-pencil-square-o"></i></button>
                             </form>
                         <?php } ?>
                     </center></td>
@@ -231,5 +234,14 @@ $(document).ready(function () {
             }
         });
     });
+});
+
+$(document).ready(function(){
+  $('#iusuario').on('click', function(){
+      $('#datos_usuario').modal('show');
+  });
+  $('#musuario').on('click', function(){
+      $('#modal_usuario').modal('show');
+  });
 });
 </script>

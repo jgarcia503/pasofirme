@@ -12,6 +12,10 @@
 	'archivo' => 'usuario/modificar_usuario.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['iusuarios'] = array(
+	'archivo' => 'usuario/ingresar_usuario.php',
+	'layout' => LAYOUT_DESKTOP
+	);
 	//Modulos de siembra
 	$conf['siembra'] = array(
 	'archivo' => 'siembras/index.php',

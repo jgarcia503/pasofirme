@@ -74,7 +74,7 @@
                     <td><center>
                         <!-- Evaluda el estado del proyecto si ha finalizado o no -->
                         <?php if ($datos['cerrado']=='false') { ?>
-                        <input type="checkbox" class="flat-red" name="finalizado" id="finalizado" data-toggle='modal' data-target='#cerrar_proyecto' onclick="proyecto_cerrado('<?php echo $datos['id_proyecto']?>');">
+                        <input type="checkbox" class="flat-red" name="finalizado" id="finalizado" data-toggle='tooltip' title="Proyecto sin cerrar" onclick="proyecto_cerrado('<?php echo $datos['id_proyecto']?>');">
                         <?php }else{ ?>
                         <i class="fa fa-check"></i>
                         <?php } ?>
@@ -215,6 +215,9 @@ $(document).ready(function(){
   });
   $("#detalle_proyecto").on('click', function(){
     $('#modal_proyecto').modal('show');
+  })
+  $("#finalizado").on('click', function(){
+    $('#cerrar_proyecto').modal('show');
   })
 });
 

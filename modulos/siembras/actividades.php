@@ -121,7 +121,7 @@ if (isset($_POST['proyecto_id'])) {
             </div>
             <div class="form-group col-md-1" id="div_boton">
                 <label>Agregar</label>
-                <button type="button" class="btn btn-success" onclick="add()"><i class="fa white fa-plus-square"></i></button>
+                <button type="button" class="btn btn-success" onclick="add()" data-toggle='tooltip' title="Agregar"><i class="fa white fa-plus-square"></i></button>
             </div>
         </fieldset>
         <div style="clear:both;"></div>
@@ -547,7 +547,7 @@ function add(){
                             +"<td width='5.1%'>"+data[i].unidad+"</td>"
                             +"<td width='9.1%'>"+data[i].dias_cant+"</td>"
                             +"<td width='7.1%'>"+data[i].subtotal+"</td>"
-                            +"<td width='4.1%'><a href='#' class='label label-danger' onsubmit='return false' onClick=\"quitar('"+data[i].actividad+"','"+data[i].tipo+"');\"><i class='fa white fa-trash'></i></a></td></tr>";
+                            +"<td width='4.1%'><a href='#' class='label label-danger' onsubmit='return false' onClick=\"quitar('"+data[i].actividad+"','"+data[i].tipo+"');\" data-toggle='tooltip' title='Quitar'><i class='fa white fa-trash'></i></a></td></tr>";
                 }
                 $('#detalle_actividad').html(opciones);
             }            
@@ -579,7 +579,7 @@ function quitar(actividad,tipo){
                             +"<td width='5.1%'>"+data[i].unidad+"</td>"
                             +"<td width='9.1%'>"+data[i].dias_cant+"</td>"
                             +"<td width='7.1%'>"+data[i].subtotal+"</td>"
-                            +"<td width='4.1%'><a href='#' class='label label-danger' onsubmit='return false' onClick=\"quitar('"+data[i].actividad+"','"+data[i].tipo+"');\"><i class='fa white fa-trash'></i></a></td></tr>";
+                            +"<td width='4.1%'><a href='#' class='label label-danger' onsubmit='return false' onClick=\"quitar('"+data[i].actividad+"','"+data[i].tipo+"');\" data-toggle='tooltip' title='Quitar'><i class='fa white fa-trash'></i></a></td></tr>";
                 }
                 $('#detalle_actividad').html(opciones);
             }else{

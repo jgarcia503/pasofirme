@@ -22,7 +22,7 @@ if (isset($_POST['id'])) {
   </ol>
 </section>
 <section class="content">
-	<div class="box box-warning">
+	<div class="box box-primary">
 	<!-- /.box-header -->
 	<div class="box-body">
 	<form action="" role="form" name="frm_musuario" id="frm_musuario" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
@@ -134,7 +134,13 @@ $(document).ready(function () {
         });
     });
 });
+
+$(function () {
+     $.mask.definitions['~'] = "[+-]";
+     $("#telefono").mask("9999-9999");
+});
 </script>
+<script src="plugins/input-mask/jquery.maskedinput.min.js"></script>
 <?php
 	}else{
 		header('Location:?mod=usuario');

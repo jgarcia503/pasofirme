@@ -16,10 +16,10 @@ if ($params['tusuario'] == 'admin' OR $params['tusuario'] == 'empleado') {
         if ($response_update['success'] == true) {
             $response = array('success'=>true, 'mensaje'=>'Usuario modificado correctamente');
         }else{
-            $response = array('success'=>false, 'error'=>'Error en la modificación de los datos');
+            $response = array('success'=>false, 'mensaje'=>'Error en la modificación de los datos');
         }
     }else{
-        $response = array('success'=>false, 'error'=>'Todos los datos son iguales');
+        $response = array('success'=>false, 'mensaje'=>'Todos los datos son iguales');
     }
 }else{
     if ($response_validar['items'][0]['tipo'] != $params['tusuario'] OR $response_validar['items'][0]['nombre'] != $params['nombre']) {
@@ -29,10 +29,10 @@ if ($params['tusuario'] == 'admin' OR $params['tusuario'] == 'empleado') {
         if ($response_update['success'] == true) {
             $response = array('success'=>true, 'mensaje'=>'Usuario modificado correctamente');
         }else{
-            $response = array('success'=>false, 'error'=>'Error en la modificación de los datos');
+            $response = array('success'=>false, 'mensaje'=>'Error en la modificación de los datos');
         }
     }else{
-        $response = array('success'=>false, 'error'=>'Todos los datos son iguales');
+        $response = array('success'=>false, 'mensaje'=>'Todos los datos son iguales');
     }
 }
 echo json_encode($response);
