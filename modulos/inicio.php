@@ -55,7 +55,7 @@
       <div class="icon">
         <i class="ion ion-leaf"></i>
       </div>
-      <a href="#" class="small-box-footer">Ir&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+      <a href="?mod=cosechas" class="small-box-footer">Ir&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->

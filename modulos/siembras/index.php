@@ -74,14 +74,14 @@
                     <td><center>
                         <!-- Evaluda el estado del proyecto si ha finalizado o no -->
                         <?php if ($datos['cerrado']=='false') { ?>
-                        <input type="checkbox" class="flat-red" name="finalizado" id="finalizado" data-toggle='tooltip' title="Proyecto sin cerrar" onclick="proyecto_cerrado('<?php echo $datos['id_proyecto']?>');">
+                        <input type="checkbox" class="flat-red" name="finalizado" id="finalizado" data-toggle='modal' data-target="#cerrar_proyecto" title="Proyecto sin cerrar" onclick="proyecto_cerrado('<?php echo $datos['id_proyecto']?>');">
                         <?php }else{ ?>
                         <i class="fa fa-check"></i>
                         <?php } ?>
                     </center></td>
                     <td><center>
                         <!-- Muestra la informacion del proyecto -->
-                        <a name="detalle" style="color: #0629F6;" id="detalle_proyecto" data-toggle='tooltip' title="Detalle del proyecto" onclick="detalle_siembra('<?php echo $datos['nombre_proyecto']?>','<?php echo $datos['fecha_inicio']?>','<?php echo $datos['fecha_fin']?>','<?php echo $datos['cerrado']?>','<?php echo $datos['nombre']?>','<?php echo $datos['correlativo_proyecto']?>','<?php echo $datos['nombre_bodega']?>','<?php echo $datos['nombre_vegetacion']?>','<?php echo $datos['notas']?>');"><i class="fa fa-eye"></i></a>
+                        <a name="detalle" style="color: #0629F6;" id="detalle_proyecto" data-toggle='modal' data-target="#modal_proyecto" title="Detalle del proyecto" onclick="detalle_siembra('<?php echo $datos['nombre_proyecto']?>','<?php echo $datos['fecha_inicio']?>','<?php echo $datos['fecha_fin']?>','<?php echo $datos['cerrado']?>','<?php echo $datos['nombre']?>','<?php echo $datos['correlativo_proyecto']?>','<?php echo $datos['nombre_bodega']?>','<?php echo $datos['nombre_vegetacion']?>','<?php echo $datos['notas']?>');"><i class="fa fa-eye"></i></a>
                     </center></td>
                   </tr>
                   <?php  
@@ -138,7 +138,7 @@
   <!-- /.modal-dialog -->
 </div>
 
-<!-- Ventana modal para el cambio de estado -->
+<!-- Ventana modal detalle del proyecto -->
 <div class="modal fade" id="modal_proyecto" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -213,12 +213,6 @@ $(document).ready(function(){
   $("#tabla_proyecto").dataTable({                
       "sPaginationType": "full_numbers"
   });
-  $("#detalle_proyecto").on('click', function(){
-    $('#modal_proyecto').modal('show');
-  })
-  $("#finalizado").on('click', function(){
-    $('#cerrar_proyecto').modal('show');
-  })
 });
 
 function detalle_siembra(nproyecto, finicio, ffin, pcerrado, ntablon, cproyecto, nbodega, ncultivo, notas) {
