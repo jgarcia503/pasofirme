@@ -98,11 +98,11 @@
             </div>
             <div class="form-group col-md-2">
                 <label>Fecha de inicio: </label>
-                <input type="text" class="form-control datepicker" name="finicio" id="finicio" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="dd-mm-yyyy" readonly>
+                <input type="text" class="form-control" data-provide="datepicker" name="finicio" id="finicio" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="dd-mm-yyyy" readonly>
             </div>
             <div class="form-group col-md-2">
                 <label>Fecha de cierre: </label>
-                <input type="text" class="form-control datepicker" name="fcierre" id="fcierre" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="dd-mm-yyyy" readonly>
+                <input type="text" class="form-control" data-provide="datepicker" name="fcierre" id="fcierre" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="dd-mm-yyyy" readonly>
             </div>
             <div class="form-group col-md-5">
                 <label>Bodega: </label>
@@ -130,7 +130,7 @@
             </div>
             <div class="form-group col-md-1">
                 <label>Agregar</label>
-                <button type="button" class="btn btn-success" onclick="add()" data-toggle='tooltip' title="Agregar"><i class="fa white fa-plus-square"></i></button>
+                <button type="button" class="btn btn-success" title="Agregar" id="agregar"><i class="fa white fa-plus-square"></i></button>
             </div>
         </fieldset>
         <fieldset class="form-group">
@@ -217,5 +217,115 @@ $("[name=redes]").on('change',function(){
   cvt=vta_elote*$("[name=precio]").val();
   cvta=parseFloat(cvt).toFixed(2);
   document.getElementById('venta').value = cvta;
+});
+
+var tforraje;
+$("[name=forraje]").on('change',function(){
+    tforraje=parseFloat($(this).val());
+});
+
+// Funcion que nos permite agregar silos a la tabla
+$("#agregar").on('click', function(){
+    var silo = $("#silo").val();
+    var tsilo = $("#tsilo").val();
+    var descripcion = $("#descripcion").val();
+    if (tforraje>=parseFloat(tsilo)) {
+        if (silo!=='' && tsilo!=='') {
+        $.ajax({
+            url: "procesos/cosecha/agregar_silo.php",
+            type: "POST",
+            dataType: "json",
+            data: {'silo':silo,'tsilo':tsilo,'descripcion':descripcion}
+        }).done(function(data){
+            if (data.success == true) {
+                total=data.items.length;
+                var datos=data.items;
+                var opciones;
+                if(total>0){
+                    for(var i=0; i<total; i++){
+                        opciones+="<tr><td width='9.1%'>"+datos[i].csilo+"</td>"
+                                +"<td width='13.1%'>"+datos[i].tsilo+"</td>"
+                                +"<td width='9.1%'>"+datos[i].descripcion+"</td>"
+                                +"<td width='4.1%'><a class='label label-danger' onsubmit='return false' onClick=\"quitar('"+datos[i].csilo+"');\" title='Quitar'><i class='fa white fa-trash'></i></a></td></tr>";
+                    }
+                    $("#agregar").blur();
+                    $('#detalle_cosecha').html(opciones);
+                    tforraje-=tsilo;
+                }
+            }else{
+                $("#agregar").blur();
+                $.confirm({icon:'fa fa-exclamation', title:'Error', content:data.mensaje, type:'red', typeAnimated:true, buttons:{tryAgain:{text:'Cerrar', btnClass:'btn-red', action: function(){close();}}}});
+            }
+        });
+        }else{
+            $("#agregar").blur();
+            $.confirm({icon:'fa fa-exclamation', title:'Error', content:'Campos vacios', type:'red', typeAnimated:true, buttons:{tryAgain:{text:'Cerrar', btnClass:'btn-red', action: function(){close();}}}});
+        }
+    }else{
+        $("#agregar").blur();
+        $.confirm({icon:'fa fa-exclamation', title:'Error', content:'Cantidad insuficiente', type:'red', typeAnimated:true, buttons:{tryAgain:{text:'Cerrar', btnClass:'btn-red', action: function(){close();}}}});
+    }
+});
+
+//qutias articulos de tabla
+function quitar(codigo){
+    //incluir alert confirm y hacer accion en caso de YES
+    if(codigo!=""){
+        $.ajax({
+            url: "procesos/cosecha/quitar_silo.php",
+            type: "POST",
+            dataType: "json",
+            data: {'codigo': codigo}
+        }).done(function(data){
+            total=data.length;
+            var opciones;
+            if(total>0){
+                for(var i=0; i<total; i++){
+                    opciones+="<tr><td width='9.1%'>"+data[i].csilo+"</td>"
+                                +"<td width='13.1%'>"+data[i].tsilo+"</td>"
+                                +"<td width='9.1%'>"+data[i].descripcion+"</td>"
+                                +"<td width='4.1%'><a class='label label-danger' onsubmit='return false' onClick=\"quitar('"+data[i].csilo+"');\" title='Quitar'><i class='fa white fa-trash'></i></a></td></tr>";
+                }
+                $('#detalle_cosecha').html(opciones);
+            }else{
+                $('#detalle_cosecha').html("");
+            }
+        });
+    }
+}
+
+//Guardar datos a la BD
+$('#guardar').click(function () {
+    $.validate({
+        onSuccess: function(form){
+            var formulario = document.getElementById("frmopcion2");
+            var formData = new FormData(formulario);
+            $.ajax({
+                url: "procesos/cosecha/guardar_opcion2.php",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
+                },
+                success: function(response){
+                    if (response.success == true) {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.reload(); }}}});
+                    } else {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                    }
+                },
+                error: function() {
+                    $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error!', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                },
+                complete: function() {
+                    $.unblockUI();
+                }
+            });
+        }
+    });
 });
 </script>

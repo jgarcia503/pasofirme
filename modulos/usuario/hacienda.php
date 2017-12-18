@@ -3,7 +3,7 @@
     $response = $data->query($sql, array(), array());
     if ($response['total'] > 0) { ?>
 
-<div class="box box-warning">
+<div class="box box-primary">
 <div class="box-header with-border">
 	<h3 class="box-title">Hacienda</h3>
 </div>
