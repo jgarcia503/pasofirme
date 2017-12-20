@@ -170,7 +170,7 @@ window.onload = function(){
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: 'procesos/cosecha/opcion3.php',
+        url: 'procesos/cosecha/total_general.php',
         data: { 'id_proyecto' : get.id },
     }).done(function (response) {
         document.getElementById('grano').value = response.total;

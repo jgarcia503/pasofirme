@@ -73,7 +73,7 @@ window.onload = function(){
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: 'procesos/cosecha/opcion4.php',
+        url: 'procesos/cosecha/total_general.php',
         data: { 'id_proyecto' : get.id },
     }).done(function (response) {
         document.getElementById('elote_zacate').value = response.total;
