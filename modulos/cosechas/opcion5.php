@@ -41,25 +41,29 @@
                     <?php } ?>
                 </select>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
                 <label>Costo tapizca: </label>
                 <input type="text" class="form-control" name="ctapizca" id="ctapizca" placeholder="0.00" data-validation="required" data-validation-error-msg="Complete este campo">
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
                 <label>Costo desgranado: </label>
                 <input type="text" class="form-control" name="cdesgranado" id="cdesgranado" placeholder="0.00" data-validation="required" data-validation-error-msg="Complete este campo">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Tonelada ma&iacute;z en grano: </label>
+                <input type="text" class="form-control" name="tmaiz" id="tmaiz" placeholder="0.00" data-validation="required" data-validation-error-msg="Complete este campo">
             </div>
           </fieldset>
           <fieldset>
             <div class="form-group col-md-1">
               <label style="color: #1645F1;">Es venta?&nbsp;&nbsp;</label>
-              <input type='checkbox' name="venta" id="venta" data-validation="required" data-validation-error-msg="Seleccione este campo" value="si">
+              <input type='checkbox' name="venta" id="venta" value="si">
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-2" id="div_pventa">
               <label>Precio de venta</label>
                 <input type="text" class="form-control" name="pventa" id="pventa" placeholder="0.00" data-validation="required" data-validation-error-msg="Complete este campo">
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3" id="div_rcosto">
               <label>Reclamaci&oacute;n de costo &#40;&#37;&#41;</label>
               <input type="text" class="form-control" name="rcosto" id="rcosto" placeholder="0.00" data-validation="required" data-validation-error-msg="Complete este campo">
             </div>
@@ -100,18 +104,18 @@
               <tbody>
                 <tr>
                   <td>Ma&iacute;z en grano</td>
-                  <td><input type="text" name="cmoler1" id="cmoler1" placeholder="0.00"></td>
-                  <td><input type="text" name="cenvasar1" id="cenvasar1" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cmoler1" id="cmoler1" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cenvasar1" id="cenvasar1" placeholder="0.00"></td>
                 </tr>
                 <tr>
                   <td>Tuza y olote para  moler</td>
-                  <td><input type="text" name="cmoler2" id="cmoler2" placeholder="0.00"></td>
-                  <td><input type="text" name="cenvasar2" id="cenvasar2" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cmoler2" id="cmoler2" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cenvasar2" id="cenvasar2" placeholder="0.00"></td>
                 </tr>
                 <tr>
                   <td>Rastrojo</td>
-                  <td><input type="text" name="cmoler3" id="cmoler3" placeholder="0.00"></td>
-                  <td><input type="text" name="cenvasar3" id="cenvasar3" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cmoler3" id="cmoler3" placeholder="0.00"></td>
+                  <td><input class="form-control" type="text" name="cenvasar3" id="cenvasar3" placeholder="0.00"></td>
                 </tr>
               </tbody>
             </table>
@@ -131,15 +135,21 @@
 </section>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#pventa").prop('readonly', true);
-  $("#rcosto").prop('readonly', true);
+  $('#div_pventa').hide();
+  $('#pventa').prop('disable', true);
+  $('#div_rcosto').hide();
+  $('#rcosto').prop('disable', true);
   $("[name=venta]").on('click', function(){
     if ($(this).is(':checked')) {
-      $("#pventa").prop('readonly', false);
-      $("#rcosto").prop('readonly', false);
+      $('#pventa').prop('disable', false);
+      $('#div_pventa').show();
+      $('#rcosto').prop('disable', false);
+      $('#div_rcosto').show();
     }else{
-      $("#pventa").prop('readonly', true);
-      $("#rcosto").prop('readonly', true);
+      $('#div_pventa').hide();
+      $('#pventa').prop('disable', true);
+      $('#div_rcosto').hide();
+      $('#rcosto').prop('disable', true);
     }
   });
 });
@@ -173,4 +183,39 @@ window.onload = function(){
         document.getElementById('enc_id').value=get.id;
     });
 }
+
+//Guardar datos a la BD
+$('#guardar').click(function () {
+    $.validate({
+        onSuccess: function(form){
+            var formulario = document.getElementById("frmopcion5");
+            var formData = new FormData(formulario);
+            $.ajax({
+                url: "procesos/cosecha/guardar_opcion5.php",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
+                },
+                success: function(response){
+                    if (response.success == true) {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.reload(); }}}});
+                    } else {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                    }
+                },
+                error: function() {
+                    $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error!', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                },
+                complete: function() {
+                    $.unblockUI();
+                }
+            });
+        }
+    });
+});
 </script>
