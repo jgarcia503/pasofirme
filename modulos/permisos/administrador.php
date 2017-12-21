@@ -54,4 +54,8 @@
 	'archivo' => 'cosechas/opcion5.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['opcion6'] = array(
+	'archivo' => 'cosechas/opcion6.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
