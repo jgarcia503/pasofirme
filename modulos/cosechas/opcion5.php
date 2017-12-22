@@ -108,7 +108,7 @@
                   <td><input class="form-control" type="text" name="cenvasar1" id="cenvasar1" placeholder="0.00"></td>
                 </tr>
                 <tr>
-                  <td>Tuza y olote para  moler</td>
+                  <td>Tuza y olote para moler</td>
                   <td><input class="form-control" type="text" name="cmoler2" id="cmoler2" placeholder="0.00"></td>
                   <td><input class="form-control" type="text" name="cenvasar2" id="cenvasar2" placeholder="0.00"></td>
                 </tr>
