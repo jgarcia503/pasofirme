@@ -188,4 +188,3 @@ $(".select2").select2({
  <!-- -->
 </body>
 </html>
-<?php unset($_SESSION['detalle_cosecha']); ?>

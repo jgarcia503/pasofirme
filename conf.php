@@ -33,6 +33,5 @@ if (isset($_SESSION['pasofirme'])) {
         'archivo' => 'login.php',
         'layout' => LAYOUT_DEFECTO
     );
-
 }
 ?>

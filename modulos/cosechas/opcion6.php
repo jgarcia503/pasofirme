@@ -47,17 +47,21 @@
             </div>
           </fieldset>
           <fieldset>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>Costo de picado: </label>
                 <input type="text" class="form-control" name="picado" id="picado" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="0.00">
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>Costo mano de obra: </label>
                 <input type="text" class="form-control" name="mano_obra" id="mano_obra" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="Cosecha">
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>Toneladas estimadas: </label>
                 <input type="text" class="form-control" name="testimadas" id="testimadas" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="0.00">
+            </div>
+            <div class="form-group col-md-3">
+                <label>Costo de transporte: </label>
+                <input type="text" class="form-control" name="ctransporte" id="ctransporte" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="0.00">
             </div>
         </fieldset>
         <fieldset>
@@ -225,4 +229,39 @@ function quitar(codigo){
         });
     }
 }
+
+//Guardar datos a la BD
+$('#guardar').click(function () {
+    $.validate({
+        onSuccess: function(form){
+            var formulario = document.getElementById("frmopcion6");
+            var formData = new FormData(formulario);
+            $.ajax({
+                url: "procesos/cosecha/guardar_opcion6.php",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
+                },
+                success: function(response){
+                    if (response.success == true) {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.reload(); }}}});
+                    } else {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                    }
+                },
+                error: function() {
+                    $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error!', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                },
+                complete: function() {
+                    $.unblockUI();
+                }
+            });
+        }
+    });
+});
 </script>
