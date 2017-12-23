@@ -66,4 +66,13 @@
 	'archivo' => 'cosechas/opcion8.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	//Modulos de ganado
+	$conf['vanimales'] = array(
+	'archivo' => 'ganados/vista_animales.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['canimales'] = array(
+	'archivo' => 'ganados/canimales.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

@@ -13,6 +13,16 @@
     </div>
     <ul class="sidebar-menu">
       <li><a href="?mod=inicio"><i class="fa fa-home"></i><span>&nbsp;Inicio</span></a></li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-weixin"></i>
+          <span>Ganado</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="?mod=vanimales"><i class="fa white fa-paw"></i> Animales</a></li>
+        </ul>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
