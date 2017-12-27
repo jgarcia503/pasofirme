@@ -63,9 +63,12 @@
                     <td><?php echo $datos['color'] ?></td>
                     <td><?php echo $datos['procedencia'] ?></td>
                     <td><center>
-                      <label class="btn btn-success" title="Informaci&oacute;n general" data-toggle="modal" data-target="#vista_animal" onclick="dgenerales('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>')"><i class="fa white fa-eye"></i></label>
-                      <label class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></label>
-                      <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
+                      <form action="?mod=manimales" method="POST">
+                        <label class="btn btn-success" title="Informaci&oacute;n general" data-toggle="modal" data-target="#vista_animal" onclick="dgenerales('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>')"><i class="fa white fa-eye"></i></label>
+                        <input type="hidden" name="id_animal" value="<?php echo $datos['id']?>" readonly>
+                        <button type="submit" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></button>
+                        <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
+                      </form>
                     </center></td>
                   </tr>
                 <?php } ?>

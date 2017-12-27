@@ -75,4 +75,8 @@
 	'archivo' => 'ganados/canimales.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['manimales'] = array(
+	'archivo' => 'ganados/modificar_animal.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
