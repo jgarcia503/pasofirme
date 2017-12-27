@@ -63,8 +63,8 @@
                     <td><?php echo $datos['color'] ?></td>
                     <td><?php echo $datos['procedencia'] ?></td>
                     <td><center>
-                      <label class="btn btn-success" title="Informaci&oacute;n general"><i class="fa white fa-eye"></i></label>
-                      <a href="#" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></a>
+                      <label class="btn btn-success" title="Informaci&oacute;n general" data-toggle="modal" data-target="#vista_animal" onclick="dgenerales('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>')"><i class="fa white fa-eye"></i></label>
+                      <label class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></label>
                       <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
                     </center></td>
                   </tr>
@@ -79,6 +79,48 @@
   <!-- /.row -->
 </section>
 <!-- /.content -->
+<!-- Ventana modal detalle de los animales -->
+<div class="modal fade" id="vista_animal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+          <h4 class="modal-title">Detalle de animal:&nbsp;<span class="break"></span><label id="ianimal" style="color: #033FE7;"></label></h4>
+      </div>
+      <div class="modal-body">
+            <!-- Custom Tabs -->
+            <span><img src="" class="img-rounded" width="120" height="100"></span>
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
+                <li><a href="#tab_2" data-toggle="tab">Genealog&iacute;a</a></li>
+                <li><a href="#tab_3" data-toggle="tab">Fenotipo</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                  
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2">
+                  
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_3">
+                  
+                </div>
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
   $("#tabla_animales").dataTable({                
@@ -115,9 +157,23 @@ function eliminar(id){
             });
           }, No: function () {
             close();
-
           },
         }
+  });
+}
+
+function dgenerales(id, nombre){
+  document.getElementById('ianimal').innerHTML = nombre;
+  $.ajax({
+    type: 'POST',
+    data: {'id_animal': id},
+    url: "procesos/ganado/detalle_general.php",
+    success: function(datos){
+      $("#vista_animal span img").attr('src','upload/ganado/'+$.trim(datos.split('|')[0]));
+      $("#vista_animal #tab_1").html(datos.split('|')[1]);
+      $("#vista_animal #tab_2").html(datos.split('|')[2]);
+      $("#vista_animal #tab_3").html(datos.split('|')[3]);
+    }
   });
 }
 </script>
