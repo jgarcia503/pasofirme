@@ -119,7 +119,7 @@ $.fn.datepicker.dates['es'] = {
     monthsShort:  ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
     today: 'Hoy',
     clear: "Limpiar",
-    format: "dd/mm/yyyy",
+    format: "yyyy-mm-dd",
     titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
     weekStart: 0
 };
