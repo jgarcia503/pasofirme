@@ -10,7 +10,9 @@ if (isset($_POST['id_animal'])) {
   $response_colores=$data->query($sql_colores, array(), array());
   $sql_grupo="SELECT *FROM grupos";
   $response_grupo=$data->query($sql_grupo, array(), array());
-}
+  $sql_foto="SELECT COALESCE(fotos,'no_disponible.png') fotos FROM animales WHERE id = :id_animal";
+  $params_foto=array("id_animal");
+  $response_foto=$data->query($sql_foto, $params, $params_foto);
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -39,7 +41,8 @@ if (isset($_POST['id_animal'])) {
         <li class="active"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
         <li><a href="#tab_2" data-toggle="tab">Genealog&iacute;a</a></li>
         <li><a href="#tab_3" data-toggle="tab">Fenotipo</a></li>
-        <li><a href="#tab_4" data-toggle="tab">Clase</a></li>
+        <li><a href="#tab_4" data-toggle="tab">Foto</a></li>
+        <li><a href="#tab_5" data-toggle="tab">Clase</a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab_1">
@@ -55,7 +58,7 @@ if (isset($_POST['id_animal'])) {
             </div>
             <div class="form-group col-md-4">
                 <label>Sexo: </label>
-                <select class="form-control" name="sexo" id="sexo" data-validation="required" data-validation-error-msg="Seleccione sexo">
+                <select class="form-control" name="sexo" id="sexo">
                   <option value="">Seleccione sexo</option>
                   <option value="Hembra" <?php if ($response_animales['items'][0]['sexo']=='Hembra') echo 'selected' ?>>Hembra</option>
                   <option value="Macho" <?php if ($response_animales['items'][0]['sexo']=='Macho') echo 'selected' ?>>Macho</option>
@@ -65,7 +68,7 @@ if (isset($_POST['id_animal'])) {
           <fieldset>
             <div class="form-group col-md-4">
                 <label>Nombre: </label>
-                <input type="text" class="form-control" name="nombre" id="nombre" data-validation="required" data-validation-error-msg="" placeholder="" value="<?php echo $response_animales['items'][0]['nombre']?>">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" value="<?php echo $response_animales['items'][0]['nombre']?>">
             </div>
             <div class="form-group col-md-4">
                 <label>Arete MAG: </label>
@@ -73,7 +76,7 @@ if (isset($_POST['id_animal'])) {
             </div>
             <div class="form-group col-md-4">
                 <label>Estado: </label>
-                <select class="form-control" name="estado" id="estado" data-validation="required" data-validation-error-msg="Seleccione estado">
+                <select class="form-control" name="estado" id="estado">
                   <option value="">Seleccione estado</option>
                   <option value="Muerto" <?php if($response_animales['items'][0]['estado']=='Muerto') echo 'selected' ?>>Muerto</option>
                   <option value="Activo" <?php if($response_animales['items'][0]['estado']=='Activo') echo 'selected' ?>>Activo</option>
@@ -85,7 +88,7 @@ if (isset($_POST['id_animal'])) {
           <fieldset>
             <div class="form-group col-md-4">
                 <label>Fecha de nacimiento: </label>
-                <input type="text" class="form-control datepicker" name="fnacimiento" id="fnacimiento" data-validation="required" data-validation-error-msg="" placeholder="yyyy-mm-dd" value="<?php echo $response_animales['items'][0]['fecha_nacimiento']?>" readonly>
+                <input type="text" class="form-control datepicker" name="fnacimiento" id="fnacimiento" placeholder="yyyy-mm-dd" value="<?php echo $response_animales['items'][0]['fecha_nacimiento']?>" readonly>
             </div>
             <div class="form-group col-md-4">
                 <label>Procedencia: </label>
@@ -93,7 +96,7 @@ if (isset($_POST['id_animal'])) {
             </div>
             <div class="form-group col-md-4">
                 <label>Raza: </label>
-                <select class="form-control" name="raza" id="raza" data-validation="required" data-validation-error-msg="Seleccione raza">
+                <select class="form-control" name="raza" id="raza">
                   <option value="">Seleccione raza</option>
                   <?php foreach ($response_razas['items'] as $key_razas) { ?>
                   <option value="<?php echo $key_razas['nombre']?>" <?php ($key_razas['nombre']==$response_animales['items'][0]['raza'])?'selected':''?>><?php echo $key_razas['nombre'] ?></option>
@@ -104,7 +107,7 @@ if (isset($_POST['id_animal'])) {
           <fieldset>
             <div class="form-group col-md-4">
                 <label>Fecha de destete: </label>
-                <input type="text" class="form-control datepicker" name="fdestete" id="fdestete" data-validation="required" data-validation-error-msg="" placeholder="yyyy-mm-dd" value="<?php echo $response_animales['items'][0]['fecha_deteste']?>" readonly>
+                <input type="text" class="form-control datepicker" name="fdestete" id="fdestete" placeholder="yyyy-mm-dd" value="<?php echo $response_animales['items'][0]['fecha_deteste']?>" readonly>
             </div>
             <div class="form-group col-md-4">
                 <label>Precio compra: </label>
@@ -124,11 +127,11 @@ if (isset($_POST['id_animal'])) {
           <fieldset>
             <div class="form-group col-md-4">
                 <label>Peso de nacimiento: </label>
-                <input type="text" class="form-control" name="pnacimiento" id="pnacimiento" data-validation="required" data-validation-error-msg="" placeholder="0.00" value="<?php echo $response_animales['items'][0]['peso_nacimiento']?>">
+                <input type="text" class="form-control" name="pnacimiento" id="pnacimiento" placeholder="0.00" value="<?php echo $response_animales['items'][0]['peso_nacimiento']?>">
             </div>
             <div class="form-group col-md-4">
                 <label>Parto: </label>
-                <select class="form-control" name="parto" id="parto" data-validation="required" data-validation-error-msg="Seleccione parto">
+                <select class="form-control" name="parto" id="parto">
                   <option value="">Seleccione parto</option>
                   <option value="primero"  <?php if($response_animales['items'][0]['parto']=='primero') echo 'selected' ?>>Primero</option>
                   <option value="segundo" <?php if($response_animales['items'][0]['parto']=='segundo') echo 'selected' ?>>Segundo</option>
@@ -143,7 +146,7 @@ if (isset($_POST['id_animal'])) {
             </div>
             <div class="form-group col-md-4">
                 <label>Color: </label>
-                <select class="form-control" name="color" id="color" data-validation="required" data-validation-error-msg="Seleccione color">
+                <select class="form-control" name="color" id="color">
                   <option value="">Seleccione color</option>
                   <?php foreach ($response_colores['items'] as $key_colores) { ?>
                   <option value="<?php echo $key_colores['nombre']?>" <?php ($key_colores['nombre']==$response_animales['items'][0]['color'])?'selected':''?>><?php echo $key_colores['nombre']?></option>
@@ -153,13 +156,13 @@ if (isset($_POST['id_animal'])) {
           </fieldset>
           <fieldset>
             <div class="form-group col-md-4">
-              <input type="checkbox" name="" value="si">
+              <input type="checkbox" name="marca_hierro" id="marca_hierro" value="si">
               &nbsp;&nbsp;
               <label class="form-check-label">Marca de Hierro</label>
             </div>
             <div class="form-group col-md-4">
                 <label>Grupo: </label>
-                <select class="form-control" name="grupo" id="grupo" data-validation="required" data-validation-error-msg="Seleccione grupo">
+                <select class="form-control" name="grupo" id="grupo">
                   <option value="">Seleccione grupo</option>
                   <?php foreach ($response_grupo['items'] as $key_grupo) { ?>
                   <option value="<?php echo $key_grupo['id']?>" <?php ($key_grupo['id']==$response_animales['items'][0]['grupo'])?'selected':''?>><?php echo $key_grupo['nombre']?></option>
@@ -189,10 +192,10 @@ if (isset($_POST['id_animal'])) {
                 <label>Concepci&oacute;n: </label>
                 <select class="form-control" name="concepcion" id="concepcion" data-validation="required" data-validation-error-msg="Seleccione concepcion">
                   <option value="">Seleccione concepcion</option>
-                  <option value="monta">monta</option>
-                  <option value="inseminacion">inseminacion</option>
-                  <option value="te">tranferencia embriones</option>
-                  <option value="fiv">fecundacion in vitro</option>
+                  <option value="monta">Monta</option>
+                  <option value="inseminacion">Inseminaci&oacute;n</option>
+                  <option value="te">Transferencia de embriones</option>
+                  <option value="fiv">Fecundaci&oacute;n in vitro</option>
                 </select>
             </div>
           </fieldset>
@@ -295,6 +298,27 @@ if (isset($_POST['id_animal'])) {
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="tab_4">
+          <fieldset class="col-md-6">
+            <div class="form-group">
+              <label>Foto actual del animal</label><br>
+              <span><img src="upload/ganado/<?php echo $response_foto['items'][0]['fotos']?>" class="img-rounded" width="270" height="210" class="img-rounded"></span>
+            </div>
+          </fieldset>
+          <fieldset class="col-md-6">
+            <div class="form-group">
+              <label>Foto a actualizar</label>
+              <input type="file" name="ganado" id="ganado" accept="image/*" onchange="loadFile(event)">
+              <img id="foto_nueva" width="240" height="200" class="img-rounded">
+            </div>
+          </fieldset>
+          <fieldset class="col-md-12">
+            <div class="form-group col-md-12">
+              <label>Notas: </label>
+              <textarea class="form-control" name="notas" id="notas" rows="7"><?php echo $response_animales['items'][0]['notas'] ?></textarea>
+            </div>
+          </fieldset>
+        </div>
+        <div class="tab-pane" id="tab_5">
           <fieldset>
             <div class="form-group col-md-4">
                 <label>Cuenta contable: </label>
@@ -305,13 +329,13 @@ if (isset($_POST['id_animal'])) {
             <table role="grid" id="tabla_cuenta" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
-                    <th><center>
+                    <th width="10%"><center>
                       N°
                     </center></th>
-                    <th><center>
+                    <th width="40%"><center>
                       Cuenta
                     </center></th>
-                    <th><center>
+                    <th width="50%"><center>
                       Descripci&oacute;n
                     </center></th>
                   </tr>
@@ -344,8 +368,11 @@ if (isset($_POST['id_animal'])) {
         <!-- /.tab-pane -->
         <div class="box-footer">
           <button type="button" onClick="?mod=vanimales" class="btn btn-danger pull-left">Cancelar</button>
-          <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar" name="guardar">Guardar</button>
+          <button type="submit" class="btn btn-primary pull-right" id="actualizar" name="actualizar"><i class="fa white fa-refresh"></i>&nbsp;Actualizar</button>
         </div>
+          <input type="hidden" value="<?php echo $_POST['id_animal'] ?>" name="id_animal">
+          <input type="hidden" value="<?php echo  $response_animales['items'][0]['nombre'] ?>" name="nom_ant">
+          <input type="hidden" value="<?php echo  $response_animales['items'][0]['numero'] ?>" name="num_ant">
         </form>
       </div>
       <!-- /.tab-content -->
@@ -356,6 +383,15 @@ if (isset($_POST['id_animal'])) {
 </div>
 </section>
 <script type="text/javascript">
+var loadFile = function(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('foto_nueva');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+};
+
 $(document).ready(function(){
   $("#div_donadora").hide();
   $("#donadora").prop('disable', true);
@@ -379,4 +415,46 @@ $('.table').on('click','.cuenta_id',function(e){
     e.preventDefault();
     $('#ccontable').val( $(this).html());
 });
+
+// Funcion que nos permitira mandar los datos a actualizar
+$(document).ready(function () {
+    $('#actualizar').click(function () {
+        $.validate({
+            onSuccess : function(form) {
+                var formulario = document.getElementById("frmmodanimales");
+                var formData = new FormData(formulario);
+                $.ajax({
+                    url: "procesos/ganado/actualizar_animal.php",
+                    type: "POST",
+                    dataType: "Json",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
+                    },
+                    success: function(response){
+                        if (response.success == true) {
+                            $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa!', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.href = "?mod=vanimales";}}}});
+                        }else{
+                            $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion!', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                        }
+                    },
+                    error: function() {
+                        $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                    },
+                    complete: function() {
+                        $.unblockUI();
+                    }
+                });
+            }
+        });
+    });
+});
 </script>
+<?php 
+}else{
+  header('Location:?mod=error');
+}
+?>

@@ -93,7 +93,7 @@
       </div>
       <div class="modal-body">
             <!-- Custom Tabs -->
-            <span><img src="" class="img-rounded" width="120" height="100"></span>
+            <span><img src="" class="img-rounded" width="170" height="130"></span>
             <div class="nav-tabs-custom">
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>

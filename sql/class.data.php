@@ -54,5 +54,18 @@ class data {
         unset($connection);
         unset($query);
     }
-}    
-?>        
+
+    #Función para renombrar y subir adjuntos a un directorio
+    function upload($name, $tmp_name, $destiny){
+        $character =  array(' ', '_', '-', '(', ')', '[', ']');
+        $actually_name = strtolower(str_replace($character,'',$name));
+        $destiny = $destiny.$actually_name;
+        if(@copy($tmp_name, $destiny)){
+            $response = array('success' => true, 'file'=>$actually_name);
+        }else{
+            $response = array('success' => false, 'file'=>$actually_name, 'error'=> 'No se subio el archivo adjunto');
+        }
+        return $response;
+    }
+}
+?>
