@@ -8,7 +8,7 @@ if (isset($_POST['id_animal'])) {
   $response_razas=$data->query($sql_razas, array(), array());
   $sql_colores="SELECT nombre FROM colores";
   $response_colores=$data->query($sql_colores, array(), array());
-  $sql_grupo="SELECT *FROM grupos";
+  $sql_grupo="SELECT * FROM grupos";
   $response_grupo=$data->query($sql_grupo, array(), array());
   $sql_foto="SELECT COALESCE(fotos,'no_disponible.png') fotos FROM animales WHERE id = :id_animal";
   $params_foto=array("id_animal");
@@ -117,7 +117,7 @@ if (isset($_POST['id_animal'])) {
                 <label>Tipo: </label>
                 <select class="form-control" name="tipo" id="tipo" data-validation="required" data-validation-error-msg="Seleccione tipo">
                   <option value="">Seleccione tipo</option>
-                  <option value="lechero"  <?php if($response_animales['items'][0]['tipo']=='lechero') echo 'selected' ?>>Lechero</option>
+                  <option value="lechero" <?php if($response_animales['items'][0]['tipo']=='lechero') echo 'selected' ?>>Lechero</option>
                   <option value="carne" <?php if($response_animales['items'][0]['tipo']=='carne') echo 'selected' ?>>Carne</option>
                   <option value="doble proposito" <?php if($response_animales['items'][0]['tipo']=='doble proposito') echo 'selected' ?>>Doble proposito</option>
                   <option value="puro" <?php if($response_animales['items'][0]['tipo']=='puro') echo 'selected' ?>>Puro</option>
@@ -133,7 +133,7 @@ if (isset($_POST['id_animal'])) {
                 <label>Parto: </label>
                 <select class="form-control" name="parto" id="parto">
                   <option value="">Seleccione parto</option>
-                  <option value="primero"  <?php if($response_animales['items'][0]['parto']=='primero') echo 'selected' ?>>Primero</option>
+                  <option value="primero" <?php if($response_animales['items'][0]['parto']=='primero') echo 'selected' ?>>Primero</option>
                   <option value="segundo" <?php if($response_animales['items'][0]['parto']=='segundo') echo 'selected' ?>>Segundo</option>
                   <option value="tercero" <?php if($response_animales['items'][0]['parto']=='tercero') echo 'selected' ?>>Tercero</option>
                   <option value="cuarto" <?php if($response_animales['items'][0]['parto']=='cuarto') echo 'selected' ?>>Cuarto</option>
