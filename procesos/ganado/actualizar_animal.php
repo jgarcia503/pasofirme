@@ -9,7 +9,7 @@ $params_imagen=array("id_animal");
 $response_imagen=$data->query($sql_imagen, $params, $params_imagen);
 unlink("../../upload/ganado/".$response_imagen['items'][0]['fotos']);
 
-$params['foto'] = $_FILES['ganado']["name"];
+$params['foto'] = strtolower($_FILES['ganado']["name"]);
 $tmp_name = $_FILES['ganado']['tmp_name'];
 $envio = $data->upload($params['foto'], $tmp_name, $ruta);
 if ($envio['success'] == true) {

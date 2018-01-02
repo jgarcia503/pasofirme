@@ -24,12 +24,12 @@ if ($params["txtusuario"] === "" || $params["txtusuario"] === null || trim($para
                 $_SESSION["nombre"] = $response["items"][0]["nombre"];
                 $_SESSION["tipo"] = $response["items"][0]["tipo"];
                 if ($params["txtpassword"] == $psw2) { 
-                    $response=array('success'=>true, 'modulo'=>'?mod=contrasena', 'titulo'=>'Bienvenido', 'mensaje'=> 'Usuario: '.$_SESSION["nombre"]);
+                    $response=array('success'=>true, 'modulo'=>'?mod=contrasena', 'titulo'=>'Paso Firme', 'mensaje'=> 'Bienvenido: '.$_SESSION["nombre"]);
                 }else{ 
-                    $response=array('success'=>true, 'modulo'=>'?mod=inicio', 'titulo'=>'Bienvenido', 'mensaje'=> 'Usuario: '.$_SESSION["nombre"]);
+                    $response=array('success'=>true, 'modulo'=>'?mod=inicio', 'titulo'=>'Paso Firme', 'mensaje'=> 'Bienvenido: '.$_SESSION["nombre"]);
                 }
             } else {
-                $response=array('success'=>false, 'titulo'=>'comunicarse con administrador de sistema!', 'mensaje'=>'Su usuario ha sido dado de baja');
+                $response=array('success'=>false, 'titulo'=>'Comunicarse con administrador de sistema!', 'mensaje'=>'Su usuario ha sido dado de baja');
             }
         } else {
             $response=array('success'=>false, 'titulo'=>'Verifique su información!', 'mensaje'=>'Usuario o contrase&ntilde;a invalidos');
