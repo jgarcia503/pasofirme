@@ -1,4 +1,4 @@
-      <header class="main-header">
+<header class="main-header">
         <!-- Logo -->
         <a href="?mod=inicio" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -93,9 +93,9 @@
                 </ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
-              <li>
+              <!-- <li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </nav>

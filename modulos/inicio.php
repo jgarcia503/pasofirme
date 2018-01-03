@@ -38,7 +38,7 @@
         <p>&nbsp;</p>
       </div>
       <div class="icon">
-        <i class="ion ion-arrow-move"></i>
+        <i class="ion ion-ios-nutrition"></i>
       </div>
       <a href="?mod=siembra" class="small-box-footer">Ir&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
     </div>

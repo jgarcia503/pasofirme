@@ -79,4 +79,16 @@
 	'archivo' => 'ganados/modificar_animal.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['razas'] = array(
+	'archivo' => 'ganados/razas.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['colores'] = array(
+	'archivo' => 'ganados/colores.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['grupos'] = array(
+	'archivo' => 'ganados/grupos.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

@@ -65,7 +65,7 @@
 <link rel="stylesheet" href="plugins/select2/select2.min.css">
 <script src="plugins/select2/select2.full.min.js"></script>
    </head>
-   <body class="hold-transition skin-blue sidebar-mini">
+   <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
       <div class="wrapper">
          <!--  Start: header  -->
          <?php include ("modulos/header.php"); ?>

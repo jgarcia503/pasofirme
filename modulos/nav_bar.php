@@ -15,12 +15,41 @@
       <li><a href="?mod=inicio"><i class="fa fa-home"></i><span>&nbsp;Inicio</span></a></li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-weixin"></i>
-          <span>Ganado</span>
+          <i class="fa fa-slideshare"></i> <span>Ganado</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li><a href="?mod=vanimales"><i class="fa white fa-paw"></i> Animales</a></li>
+          <li>
+            <a href="#"><i class="fa fa-paw"></i> Animales <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="?mod=vanimales"><i class="fa fa-circle-o"></i> Animales</a></li>
+              <li><a href="?mod=razas"><i class="fa fa-circle-o"></i> Razas</a></li>
+              <li><a href="?mod=colores"><i class="fa fa-circle-o"></i> Colores</a></li>
+              <li><a href="?mod=grupos"><i class="fa fa-circle-o"></i> Grupos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-male"></i>
+          <span>Administrador</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="?mod=hacienda"><i class="fa fa-map"></i> Hacienda</a></li>
+          <li><a href="?mod=usuarios"><i class="fa fa-group"></i> Contactos</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Proyectos</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="?mod=siembra"><i class="ion ion-ios-nutrition"></i> Siembras</a></li>
+          <li><a href="?mod=cosechas"><i class="fa fa-leaf"></i> Cosechas</a></li>
         </ul>
       </li>
     </ul>
