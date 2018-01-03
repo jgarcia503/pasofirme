@@ -7,7 +7,7 @@ $sql_validar="SELECT raza FROM animales WHERE raza IN (SELECT nombre FROM razas 
 $params_validar=array("id_raza");
 $response_validar=$data->query($sql_validar, $params, $params_validar);
 if ($response_validar['total'] > 0) {
-	$response=array('success'=>false, 'mensaje'=>'No se puede eliminar ya existe un animal de esta raza');
+	$response=array('success'=>false, 'mensaje'=>'No se puede eliminar, ya existe un animal de esta raza');
 }else{
 	$sql_delete="DELETE FROM razas WHERE id = :id_raza";
 	$params_delete=array("id_raza");

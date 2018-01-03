@@ -15,7 +15,7 @@
       <li><a href="?mod=inicio"><i class="fa fa-home"></i><span>&nbsp;Inicio</span></a></li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-slideshare"></i> <span>Ganado</span>
+          <i class="fa fa-map-signs"></i> <span>Ganado</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">

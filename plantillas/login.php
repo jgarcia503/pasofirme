@@ -12,7 +12,7 @@ if (isset($_SESSION['pasofirme'])) {
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
     <head>
         <title>Paso Firme S.A de C.V</title>
-        <link rel="icon" type="image/png" href="img/pie3.png" />
+        <link rel="shortcut icon" type='image/x-icon' href="img/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" type="text/css" href="plugins/yop/css/login.css" media="all">
