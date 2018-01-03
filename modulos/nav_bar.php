@@ -43,7 +43,7 @@
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-edit"></i>
+          <i class="fa fa-list-alt"></i>
           <span>Proyectos</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
