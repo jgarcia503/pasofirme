@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Paso Firme S.A de C.V</title>
+      <link rel="stylesheet" href="plugins/awesomplete/awesomplete.css">
       <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
       <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
@@ -147,6 +148,7 @@ $(".select2").select2({
  <!-- NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
  <!-- Morris.js charts -->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
+<script src="plugins/awesomplete/awesomplete.min.js"></script>
 <script src="plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="plugins/sparkline/jquery.sparkline.min.js"></script>

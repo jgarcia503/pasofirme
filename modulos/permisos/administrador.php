@@ -91,4 +91,13 @@
 	'archivo' => 'ganados/grupos.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	//Modulos de produccion
+	$conf['panimales'] = array(
+	'archivo' => 'producciones/peso_animales.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cpanimal'] = array(
+	'archivo' => 'producciones/cpeso_animal.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
