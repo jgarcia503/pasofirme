@@ -51,10 +51,10 @@
                     <td><?php echo $datos['nombre'] ?></td>
                     <td id="uno"><?php echo $datos['produccion_minima'] ?></td>
                     <td id="uno"><?php echo $datos['dias_nac'] ?></td>
-                    <td><center>
+                    <td id="uno">
                       <label class="btn btn-success" title="Detalle del grupo" data-toggle="modal" data-target="#ver" onclick="ver('<?php echo $datos['nombre'] ?>', '<?php echo $datos['clasificacion'] ?>', '<?php echo $datos['produccion_minima'] ?>', '<?php echo $datos['dias_nac'] ?>')"><i class="fa white fa-eye"></i></label>
-                      <label class="btn btn-primary" title="Actualizar informaci&oacute;n" data-toggle="modal" data-target="#actualizar_grupo" onclick="ugrupo('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>','<?php echo $datos['produccion_minima'] ?>');"><i class="fa white fa-edit"></i></label>
-                    </center></td>
+                      <label class="btn btn-warning" title="Animales en el grupo" data-toggle="modal" data-target="#ganimales" onclick="listar_grupoanimales('<?php echo $datos['id']?>')"><i class="fa white fa-list-ul"></i></label>
+                      <label class="btn btn-primary" title="Actualizar informaci&oacute;n" data-toggle="modal" data-target="#actualizar_grupo" onclick="ugrupo('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>','<?php echo $datos['produccion_minima'] ?>');"><i class="fa white fa-edit"></i></label></td>
                   </tr>
                 <?php } ?>
                </tbody>
@@ -117,6 +117,34 @@
   <!-- /.modal-dialog -->
 </div>
 
+<!-- Ventana modal para crear raza -->
+<div class="modal fade" id="ganimales" style="display: none;">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Animales en este grupo</h4>
+      </div>
+      <div class="modal-body">
+        <table role="grid" class="table table-condensed">
+           <thead>
+              <tr class="bg bg-info">
+                <th><center>
+                  Nombre
+                </center></th>
+              </tr>
+           </thead>
+           <tbody id="detalle_animales_grupo">
+           </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
 <!-- Ventana modal para actualizar informacion -->
 <div class="modal fade" id="ver" style="display: none;">
   <div class="modal-dialog">
@@ -164,7 +192,7 @@
         <h4 class="modal-title">Actualizar informaci&oacute;n</h4>
       </div>
       <div class="modal-body">
-        <form role="form" name="frmucolor" id="frmucolor" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
+        <form role="form" name="frmugrupo" id="frmugrupo" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
           <input type="hidden" name="id_grupo" id="id_grupo" readonly>
           <fieldset>
             <div class="form-group col-md-12">
@@ -282,12 +310,12 @@ $(document).ready(function () {
     $('#actualizar').click(function () {
         $.validate({
            onSuccess : function(form) {
-                var formulario = $('#frmucolor').serializeArray();
+                var formulario = $('#frmugrupo').serializeArray();
                 $.ajax({
                     data: formulario,
                     type: 'POST',
                     dataType: "Json",
-                    url: 'procesos/ganado/actualizar_color.php',
+                    url: 'procesos/ganado/actualizar_grupo.php',
                     beforeSend: function () {
                         $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
                     },
@@ -309,4 +337,29 @@ $(document).ready(function () {
         });
     });
 });
+
+// Muestra el precion del tablon
+function listar_grupoanimales(id){
+    $.ajax({
+      url : 'procesos/ganado/listar_grupoanimales.php',
+      type: 'POST',
+      data: {'grupo_id':id},
+      dataType: 'json',
+      success: function(response){
+        var opciones;
+        if(response.success){
+          $('#detalle_animales_grupo tr').remove();
+          $.each(response.items, function(index, value){
+            opciones+="<tr><td>"+value.nombre+"</td></tr>";
+          });
+          $('#detalle_animales_grupo').html(opciones);
+        }else{
+          alert(response.error);
+        }
+      },
+      error: function(){
+        alert('hubo un error al ejecutar la accion');
+      }
+  });
+}
 </script>
