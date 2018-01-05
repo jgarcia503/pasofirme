@@ -53,30 +53,30 @@ if (isset($_POST['proyecto_id'])) {
 	<form action="" role="form" name="frmactividades" id="frmactividades" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
 		<input type="hidden" value="<?php echo $_POST['proyecto_id']?>" name="enc_id" id="enc_id" readonly>
 		<fieldset>
-                <!-- <legend>title or explanatory caption</legend> -->
-            <div class="form-group col-md-2">
-                <label>Fecha: </label>
-                <input type="text" class="form-control" data-provide="datepicker" name="fecha" id="fecha" data-validation="required" data-validation-error-msg="Seleccione fecha" placeholder="dd-mm-yyyy" readonly>
-            </div>
-            <div class="form-group col-md-6">
-                <label>Actividad: </label>
-                <select class="form-control" name="actividad" id="actividad" data-validation="required" data-validation-error-msg="Seleccione actividad">
-                    <option value="">Seleccione actividad</option>
-                    <?php foreach ($response_controles['items'] as $key_controles) { ?>
-                        <option value="<?php echo $key_controles['nombre']?>"><?php echo $key_controles['nombre'] ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label>Tipo: </label>
-                <select class="form-control" name="tipo" id="tipo" data-validation="required" data-validation-error-msg="Seleccione tipo" onchange="tipo_mostrar($('#tipo').val());">
-                    <option value="">Seleccione tipo</option>
-                    <option value="material">Material</option>
-                    <option value="mano de obra">Mano de obra</option>
-                    <option value="deterioro activo">Deterioro activo</option>
-                </select>
-            </div>
-        </fieldset>
+            <!-- <legend>title or explanatory caption</legend> -->
+        <div class="form-group col-md-2">
+            <label>Fecha: </label>
+            <input type="text" class="form-control" data-provide="datepicker" name="fecha" id="fecha" data-validation="required" data-validation-error-msg="Seleccione fecha" placeholder="dd-mm-yyyy" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Actividad: </label>
+            <select class="form-control" name="actividad" id="actividad" data-validation="required" data-validation-error-msg="Seleccione actividad">
+                <option value="">Seleccione actividad</option>
+                <?php foreach ($response_controles['items'] as $key_controles) { ?>
+                    <option value="<?php echo $key_controles['nombre']?>"><?php echo $key_controles['nombre'] ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label>Tipo: </label>
+            <select class="form-control" name="tipo" id="tipo" data-validation="required" data-validation-error-msg="Seleccione tipo" onchange="tipo_mostrar($('#tipo').val());">
+                <option value="">Seleccione tipo</option>
+                <option value="material">Material</option>
+                <option value="mano de obra">Mano de obra</option>
+                <option value="deterioro activo">Deterioro activo</option>
+            </select>
+        </div>
+    </fieldset>
 		<fieldset>
             <!-- <legend>title or explanatory caption</legend> -->
             <div class="form-group col-md-2" id="div_mano_obra">
@@ -184,8 +184,8 @@ if (isset($_POST['proyecto_id'])) {
 		  <textarea class="form-control" rows="4" name="notas" id="notas"></textarea>
 		</div>
 		<div class="box-footer">
-			<button type="button" onClick="location.reload()" class="btn btn-danger pull-left">Cancelar</button>
-	    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar" name="guardar">Guardar</button>
+			<button type="button" onClick="location.reload()" class="btn btn-danger pull-left"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+	    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
 		</div>
 	</form>
 	</div>

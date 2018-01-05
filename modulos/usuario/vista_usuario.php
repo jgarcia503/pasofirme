@@ -130,9 +130,6 @@
             <input type="text" class="form-control" id="estado" disabled="disable" style="width: 95%;">
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-      </div>
     </div>
     <!-- /.modal-content -->
   </div>
@@ -164,8 +161,8 @@
             </div>
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="submit" id="modificar_estado" name="modificar_estado" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+        <button type="submit" id="modificar_estado" name="modificar_estado" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Guardar</button>
       </div>
       </form>
     </div>

@@ -367,7 +367,7 @@ if (isset($_POST['id_animal'])) {
         </div>
         <!-- /.tab-pane -->
         <div class="box-footer">
-          <button type="button" onClick="?mod=vanimales" class="btn btn-danger pull-left">Cancelar</button>
+          <button type="button" onClick="?mod=vanimales" class="btn btn-danger pull-left"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
           <button type="submit" class="btn btn-primary pull-right" id="actualizar" name="actualizar"><i class="fa white fa-refresh"></i>&nbsp;Actualizar</button>
         </div>
           <input type="hidden" value="<?php echo $_POST['id_animal'] ?>" name="id_animal">

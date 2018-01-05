@@ -81,7 +81,7 @@
                     </center></td>
                     <td><center>
                         <!-- Muestra la informacion del proyecto -->
-                        <a name="detalle" style="color: #0629F6;" id="detalle_proyecto" data-toggle='modal' data-target="#modal_proyecto" title="Detalle del proyecto" onclick="detalle_siembra('<?php echo $datos['nombre_proyecto']?>','<?php echo $datos['fecha_inicio']?>','<?php echo $datos['fecha_fin']?>','<?php echo $datos['cerrado']?>','<?php echo $datos['nombre']?>','<?php echo $datos['correlativo_proyecto']?>','<?php echo $datos['nombre_bodega']?>','<?php echo $datos['nombre_vegetacion']?>','<?php echo $datos['notas']?>');"><i class="fa fa-eye"></i></a>
+                        <a name="detalle" style="color: #0629F6;" id="detalle_proyecto" data-toggle='modal' data-target="#modal_proyecto" title="Detalle del proyecto" onclick="detalle_siembra('<?php echo $datos['id_proyecto']?>');"><i class="fa fa-eye"></i></a>
                     </center></td>
                   </tr>
                   <?php  
@@ -128,8 +128,8 @@
         </fieldset>
     </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="submit" id="cierre_proyecto" name="cierre_proyecto" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+        <button type="submit" id="cierre_proyecto" name="cierre_proyecto" class="btn btn-primary"><i class="fa fa-send"></i>&nbsp;Enviar</button>
       </div>
     </form>
     </div>
@@ -208,23 +208,29 @@ $(document).ready(function(){
     document.form.checkbox.blur();
   });
   $('#modal_proyecto').on('hidden.bs.modal', function (e) {
-        $('[name=detalle]').blur();
+      $('[name=detalle]').blur();
     });
   $("#tabla_proyecto").dataTable({                
       "sPaginationType": "full_numbers"
   });
 });
 
-function detalle_siembra(nproyecto, finicio, ffin, pcerrado, ntablon, cproyecto, nbodega, ncultivo, notas) {
-    document.getElementById('nproyecto').value = nproyecto;
-    document.getElementById('fechainicio').value = finicio;
-    document.getElementById('pcerrado').value = pcerrado;
-    document.getElementById('fechafinalizacion').value = ffin;
-    document.getElementById('ntablones').value = ntablon;
-    document.getElementById('corr_proyecto').value = cproyecto;
-    document.getElementById('bseleccionada').value = nbodega;
-    document.getElementById('tcultivo').value = ncultivo;
-    document.getElementById('notas').value = notas;
+function detalle_siembra(id) {
+  $.post("procesos/siembra/detalle_siembra.php", 
+        { "proyecto_id": id }, 
+        function(data){
+        var data=JSON.parse(data);
+        var resultado=data.items;
+        document.getElementById('nproyecto').value = resultado[0].nombre_proyecto;
+        document.getElementById('fechainicio').value = resultado[0].fecha_inicio;
+        document.getElementById('pcerrado').value = resultado[0].cerrado;
+        document.getElementById('fechafinalizacion').value = resultado[0].fecha_fin;
+        document.getElementById('ntablones').value = resultado[0].nombre;
+        document.getElementById('corr_proyecto').value = resultado[0].correlativo_proyecto;
+        document.getElementById('bseleccionada').value = resultado[0].bodega_seleccionada+'-'+resultado[0].nombre_bodega;
+        document.getElementById('tcultivo').value = resultado[0].tipo_cultivo+'-'+resultado[0].nombre_vegetacion;
+        document.getElementById('notas').value = resultado[0].notas;
+    });
 } /*Muestra la informacion del proyecto*/
 
 function proyecto_cerrado(id) {

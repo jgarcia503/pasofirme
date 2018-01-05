@@ -84,10 +84,10 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="?mod=contrasena" class="btn btn-default btn-flat">Cambiar contrase&ntilde;a</a>
+                      <a href="?mod=contrasena" class="btn btn-default btn-flat"><i class="ion ion-key"></i>&nbsp;Cambiar contrase&ntilde;a</a>
                     </div>
                     <div class="pull-right">
-                      <a href="?mod=logout" class="btn btn-default btn-flat">Cerrar sesion</a>
+                      <a href="?mod=logout" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>&nbsp;Salir</a>
                     </div>
                   </li>
                 </ul>

@@ -90,8 +90,8 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="submit" id="continuar" name="continuar" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+        <button type="submit" id="continuar" name="continuar" class="btn btn-primary"><i class="fa fa-send"></i>&nbsp;Enviar</button>
       </div>
     </form>
     </div>

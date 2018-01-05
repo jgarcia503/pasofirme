@@ -100,8 +100,8 @@ img.encabezado{
   </div>
   <!-- /.box-body -->
   <div class="box-footer">
-    <button type="reset" class="btn btn-primary pull-left" id="limpiar">Limpiar</button>
-    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar">Guardar</button>
+    <button type="reset" class="btn btn-success pull-left" id="limpiar"><i class="fa fa-eraser"></i>&nbsp;Limpiar</button>
+    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
   </div>
 </form>
 </div>

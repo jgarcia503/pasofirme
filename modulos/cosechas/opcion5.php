@@ -121,9 +121,9 @@
             </table>
           </fieldset>
         <div class="box-footer">
-          <button type="button" onClick="location.href='?mod=cosechas'" class="btn btn-danger margin-right pull-left">Cancelar</button>
-          <button type="reset" class="btn btn-success pull-left" id="limpiar">Limpiar</button>
-          <button type="submit" class="btn btn-primary pull-right" id="guardar" name="guardar">Guardar</button>
+          <button type="button" onClick="location.href='?mod=cosechas'" class="btn btn-danger margin-right pull-left"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+          <button type="reset" class="btn btn-success pull-left" id="limpiar"><i class="fa fa-eraser"></i>&nbsp;Limpiar</button>
+          <button type="submit" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
         </div>
         </form>
         </div>
