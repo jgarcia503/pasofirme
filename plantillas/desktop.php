@@ -79,7 +79,7 @@
             ?>
          <!-- End: Left side column. contains the logo and sidebar -->
          <!-- Content Wrapper. Contains page content -->
-         <div class="content-wrapper" style="background-image: url(img/fondo7.jpg);">
+         <div class="content-wrapper" style="background-color: #DFDFDF;">
             <!-- Content Header (Page header) -->
             <!-- Main content -->
             <section class="content" style="font-size: 9pt;">
@@ -191,3 +191,4 @@ $(".select2").select2({
 </body>
 </html>
 <?php unset($_SESSION['detalle_cosecha']); ?>
+<?php unset($_SESSION['detalle_peso_animal']); ?>
