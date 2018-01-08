@@ -12,7 +12,6 @@ foreach ($respuesta['items'] as $consulta) {
     $encontrado = false;
     foreach ($_SESSION['peso_animal']['items'] as $detalle) {
         if ($consulta['num_animal'] == $detalle["num_animal"]) {
-        	echo "1";
             $encontrado = true;
             break;
         }
@@ -31,28 +30,7 @@ foreach ($respuesta['items'] as $consulta) {
         $response_update = $data->query($sql_update, $params_update, array(), true);
     }
 }
-// foreach ($_SESSION['peso_animal']['items'] as $sesion) {
-//     $sql2 = "SELECT regexp_split_to_table(rtrim(numero,','),',') num_animal FROM bit_peso_animal WHERE id = :id_peso_animal";
-//     $respuesta_insumos = $data->query($sql2, array("id_peso_animal"=>$params['id_panimal']));
-//     if ($respuesta_insumos['items'][0]['num_animal'] != $sesion['num_animal']) {
-//     	$params['animal_numero']='';
-// 		$params['animal_nombre']='';
-// 		$params['animal_peso']='';
-// 		foreach ($_SESSION['peso_animal']['items'] as $detalle_panimal) {
-// 			$params['animal_numero'].=explode('=', $detalle_panimal['num_animal'])[0].',';
-// 			$params['animal_nombre'].=explode('=', $detalle_panimal['animal'])[0].',';
-// 			$params['animal_peso'].=explode('=', $detalle_panimal['peso'])[0].',';
-// 		}
-//         $sql_insert = "INSERT INTO bit_peso_animal(fecha, empleado, numero, nombre, peso, notas) VALUES('".$params['fecha']."', '".$params['empleado']."', '".$params['animal_numero']."', '".$params['animal_nombre']."', '".$params['animal_peso']."', '".$params['notas']."') RETURNING id";
-//         $response_insert = $data->query($sql_insert, array(), array(), true);
-//     }
-// }
-// if ($response_update['success'] == true || $response_insert['insertId'] > 0) {
-//     $response = array('success'=>true, 'mensaje'=>"Datos actualizados correctamente");
-// } else {
-//     $response = array('success'=>false, 'mensaje'=>"Error en la operación");
-// }
-if ($response_update['success'] == true) {
+if ($response_update['success'] == true OR $response_update['total'] > 0) {
     $response = array('success'=>true, 'mensaje'=>"Datos actualizados correctamente");
 } else {
     $response = array('success'=>false, 'mensaje'=>"Error en la operación");

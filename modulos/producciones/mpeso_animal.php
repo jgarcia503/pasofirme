@@ -220,7 +220,7 @@ $('#guardar').click(function () {
             var formulario = document.getElementById("frmmodpanimal");
             var formData = new FormData(formulario);
             $.ajax({
-                url: "procesos/produccion/guardar_peso_animal.php",
+                url: "procesos/produccion/modificar_peso_animal.php",
                 type: "POST",
                 dataType: "json",
                 data: formData,
