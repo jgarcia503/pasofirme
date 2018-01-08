@@ -52,7 +52,7 @@
                     <td><?php echo $datos['empleado'] ?></td>
                     <td id="uno"><label data-toggle="modal" data-target="#peso_animales" onclick="ver('<?php echo $datos['id']?>')" style="color: #1930FF;">Animales</label></td>
                     <td><center>
-                      <form action="#" method="POST">
+                      <form action="?mod=mpeso_animal" method="POST">
                         <input type="hidden" name="id_animal" value="<?php echo $datos['id']?>" readonly>
                         <button type="submit" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></button>
                         <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>

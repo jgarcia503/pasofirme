@@ -100,4 +100,8 @@
 	'archivo' => 'producciones/cpeso_animal.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['mpeso_animal'] = array(
+	'archivo' => 'producciones/mpeso_animal.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

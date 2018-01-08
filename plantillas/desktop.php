@@ -192,3 +192,4 @@ $(".select2").select2({
 </html>
 <?php unset($_SESSION['detalle_cosecha']); ?>
 <?php unset($_SESSION['detalle_peso_animal']); ?>
+<?php unset($_SESSION['peso_animal']); ?>
