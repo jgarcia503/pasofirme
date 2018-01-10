@@ -104,4 +104,12 @@
 	'archivo' => 'producciones/mpeso_animal.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['peso_leche'] = array(
+	'archivo' => 'producciones/peso_leche.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cpleche'] = array(
+	'archivo' => 'producciones/cpeso_leche.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

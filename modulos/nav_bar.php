@@ -32,7 +32,7 @@
             <a href="#"><i class="fa fa-gg"></i> Producci&oacute;n <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="?mod=panimales">Peso de animales</a></li>
-              <li><a href="#">Producci&oacute;n de leche</a></li>
+              <li><a href="?mod=peso_leche">Producci&oacute;n de leche</a></li>
               <li><a href="#">An&aacute;lisis de leche</a></li>
             </ul>
           </li>
