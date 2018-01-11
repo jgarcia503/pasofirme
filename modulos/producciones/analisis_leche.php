@@ -168,7 +168,7 @@ function ver_pdf(id){
       data: {'id':id},
       dataType: 'json',
       type: 'POST',
-      url: 'reportes/rep_analisis_leche.php',
+      url: 'reportes/factura_leche.php',
       beforeSend: function () {
           document.getElementById('pdfanalisis').innerHTML=('<br><br><center><br><p>Generando reporte...</p></center><br><br>');
           $("#factura_venta").modal('show');

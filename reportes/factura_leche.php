@@ -8,7 +8,6 @@ $html='<html><head><meta http-equiv="Content-Type" content="text/html; charset=U
 $elementos=array(
     array('nombre' => '[header]', 'valor' => header_page()),
     array('nombre' => '[style_css]', 'valor' => style_css())
-    //array('nombre' => '[footer]', 'valor' => footer_page())
 );
 
 array_push($elementos, array('nombre' => '[contenido]', 'valor' => contenido_analisis_leche()));
@@ -165,7 +164,7 @@ function datos_analisis_leche(){
     }
     return $html;
 }
-//------------------------------------------------------------------------- Estilos y pie de paginas -----------------------------------------------------------------------//
+//----------------------------------------------------------------------- Estilos y pie de paginas -----------------------------------------------------------------------//
 function style_css(){
     $html='
         <style type="text/css">
@@ -190,14 +189,4 @@ function style_css(){
     ';
     return $html;
 }
-// function footer_page(){
-//     $html="
-//         <script type=\"text/php\"> 
-//           if ( isset(\$pdf) ) { 
-//             @\$pdf->page_text(300,580,\"" . ' Pagina: {PAGE_NUM} de {PAGE_COUNT}' . "  - - - -  Impreso el " . date('d-m-Y') . " a las " . date('H:i:s') . "\", Font_Metrics::get_font(\"helvetica\"), 8, array(0,0,0));
-//           } 
-//         </script>
-//     ";
-//   return $html;
-// }
 ?>
