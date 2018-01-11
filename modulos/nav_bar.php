@@ -33,7 +33,7 @@
             <ul class="treeview-menu">
               <li><a href="?mod=panimales">Peso de animales</a></li>
               <li><a href="?mod=peso_leche">Producci&oacute;n de leche</a></li>
-              <li><a href="#">An&aacute;lisis de leche</a></li>
+              <li><a href="?mod=analisis_leche">An&aacute;lisis de leche</a></li>
             </ul>
           </li>
         </ul>

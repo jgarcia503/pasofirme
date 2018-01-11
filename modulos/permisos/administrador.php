@@ -112,4 +112,12 @@
 	'archivo' => 'producciones/cpeso_leche.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['analisis_leche'] = array(
+	'archivo' => 'producciones/analisis_leche.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['canalisis_leche'] = array(
+	'archivo' => 'producciones/canalisis_leche.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
