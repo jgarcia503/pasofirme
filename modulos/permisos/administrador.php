@@ -120,4 +120,13 @@
 	'archivo' => 'producciones/canalisis_leche.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	//Modulos de reproduccion
+	$conf['servicios'] = array(
+	'archivo' => 'reproducciones/servicios.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cservicios'] = array(
+	'archivo' => 'reproducciones/cservicios.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

@@ -12,7 +12,7 @@
       <!-- Bootstrap Color Picker -->
       <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
       <!-- Bootstrap time Picker -->
-      <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+      <link rel="stylesheet" href="plugins/jtimepicker/jquery.timepicker.css">
       <link rel="shortcut icon" type='image/x-icon' href="img/favicon.ico"/>
       <!-- Tell the browser to be responsive to screen width -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -53,6 +53,7 @@
       <![endif]-->
       <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jquery-2.1.4.min.js"></script>
+<script src="plugins/jtimepicker/jquery.timepicker.js"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -141,6 +142,10 @@ $('.datatable').DataTable();
 //Select2, intsanciado para llamarlo mediante la clase
 $(".select2").select2({
     placeholder: "Seleccione una opcion"
+});
+
+$(".timepicker").timepicker({
+  'disableTextInput': true
 });
 
 });

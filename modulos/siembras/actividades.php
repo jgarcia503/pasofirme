@@ -185,7 +185,7 @@ if (isset($_POST['proyecto_id'])) {
 		</div>
 		<div class="box-footer">
 			<button type="button" onClick="location.reload()" class="btn btn-danger pull-left"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
-	    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
+	    <button type="submit" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
 		</div>
 	</form>
 	</div>

@@ -93,7 +93,7 @@ $response_bodega = $data->query($sql_bodegas, array(), array());
 		<div class="box-footer">
 			<button type="button" onClick="location.href='?mod=siembra'" class="btn btn-danger margin-right pull-left"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
 		    <button type="reset" class="btn btn-success pull-left" id="limpiar"><i class="fa fa-eraser"></i>&nbsp;Limpiar</button>
-		    <button type="submit" name="guardar" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
+		    <button type="submit" class="btn btn-primary pull-right" id="guardar" name="guardar"><i class="fa fa-save"></i>&nbsp;Guardar</button>
 		</div>
 	</form>
 	</div>

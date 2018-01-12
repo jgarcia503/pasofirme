@@ -36,6 +36,12 @@
               <li><a href="?mod=analisis_leche">An&aacute;lisis de leche</a></li>
             </ul>
           </li>
+          <li>
+            <a href="#"><i class="fa fa-cubes"></i> Reproducci&oacute;n <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="?mod=servicios">Servicios</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="treeview">
