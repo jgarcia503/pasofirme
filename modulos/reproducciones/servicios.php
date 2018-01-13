@@ -64,7 +64,7 @@
                     <td><?php echo $datos['donadora'] ?></td>
                     <td><center>
                       <form action="?mod=mservicios" method="POST">
-                        <label class="btn btn-success" title="Detalle de servicios" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
+                        <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_servicio" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
                         <input type="hidden" name="id_servicios" value="<?php echo $datos['id']?>" readonly>
                         <button type="submit" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></button>
                         <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
@@ -82,10 +82,120 @@
   <!-- /.row -->
 </section>
 <!-- /.content -->
+<!-- Ventana modal para crear raza -->
+<div class="modal fade" id="info_servicio" style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Informaci&oacute;n de Servicio</h4>
+      </div>
+      <div class="modal-body">
+        <fieldset>
+          <div class="form-group col-md-3">
+            <label>Fecha</label>
+            <input type="text" class="form-control" id="fecha" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Hora</label>
+            <input type="text" class="form-control" id="hora" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Animal</label>
+            <input type="text" class="form-control" id="animal" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Tipo</label>
+            <input type="text" class="form-control" id="tipo" readonly>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group col-md-3">
+            <label>Inseminador</label>
+            <input type="text" class="form-control" id="inseminador" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Padre</label>
+            <input type="text" class="form-control" id="padre" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Donadora</label>
+            <input type="text" class="form-control" id="donadora" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label>C&oacute;digo de Pajilla</label>
+            <input type="text" class="form-control" id="pajilla" readonly>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group col-md-12">
+            <label>Donadora</label>
+            <textarea class="form-control" id="notas" rows="5" readonly></textarea>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
   $("#tabla_servicios").dataTable({                
       "sPaginationType": "full_numbers"
   });
 });
+
+function ver(id){
+  $.post("procesos/reproduccion/informacion_servicio.php",
+    {'id':id},
+    function(data){
+      var data=JSON.parse(data);
+      var resultado=data.items;
+      document.getElementById('fecha').value=resultado[0].fecha;
+      document.getElementById('hora').value=resultado[0].hora;
+      document.getElementById('animal').value=resultado[0].animal;
+      document.getElementById('tipo').value=resultado[0].tipo;
+      document.getElementById('inseminador').value=resultado[0].inseminador;
+      document.getElementById('padre').value=resultado[0].padre;
+      document.getElementById('donadora').value=resultado[0].donadora;
+      document.getElementById('pajilla').value=resultado[0].codigo_pajilla;
+      document.getElementById('notas').value=resultado[0].notas;
+    });
+}
+
+function eliminar(id){
+  $.confirm({title: 'Desea elminar el servicio?', content:'', icon: 'fa fa-info-circle', 
+    buttons: {
+      Si: function () {
+        close();
+        $.ajax({
+          type: 'POST',
+          dataType: 'json',
+          data: {'id_servicio':id},
+          url: "procesos/reproduccion/eliminar_servicio.php",
+          beforeSend: function(){
+            $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
+          },
+          success: function(response){
+            if (response.success == true) {
+              $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.href='?mod=vanimales'}}}});
+            }else{
+              $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+            }
+          },
+          error: function(){
+            $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error!', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+          },
+          complete: function(){
+            $.unblockUI();
+          }
+        });
+      }, No: function () {
+        close();
+      },
+    }
+  });
+}
 </script>

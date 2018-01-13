@@ -129,4 +129,8 @@
 	'archivo' => 'reproducciones/cservicios.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['mservicios'] = array(
+	'archivo' => 'reproducciones/mservicios.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
