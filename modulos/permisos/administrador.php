@@ -141,4 +141,8 @@
 	'archivo' => 'reproducciones/cpalpaciones.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['respalpaciones'] = array(
+	'archivo' => 'reproducciones/respalpaciones.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
