@@ -40,6 +40,7 @@
             <a href="#"><i class="fa fa-cubes"></i> Reproducci&oacute;n <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="?mod=servicios">Servicios</a></li>
+              <li><a href="?mod=palpaciones">Palpaciones</a></li>
             </ul>
           </li>
         </ul>

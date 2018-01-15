@@ -1,14 +1,14 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    <i class="fa fa-joomla"></i>&nbsp;Administraci&oacute;n de servicios
+    <i class="fa fa-ils"></i>&nbsp;Administraci&oacute;n de palpaciones
   </h1>
   <ol class="breadcrumb">
     <li><a href="?mod=inicio"><i class="fa fa-home"></i>&nbsp;Inicio</a></li>
     &nbsp;&nbsp;
     <i class="fa fa-angle-right" style="color: #0C0303"></i>
     &nbsp;&nbsp;
-    <li class="active"><i class="fa fa-joomla"></i>&nbsp;Administraci&oacute;n de sarvicios</li>
+    <li class="active"><i class="fa fa-ils"></i>&nbsp;Administraci&oacute;n de palpaciones</li>
   </ol>
 </section>
 <!-- Main content -->
@@ -16,59 +16,39 @@
   <div class="row">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h5><a href="?mod=cservicios" class="fa fa-plus-circle" style="color: #0C0303;">&nbsp;Ingresar servicios</a></h5>
+          <h5><a href="?mod=cpalpaciones" class="fa fa-plus-circle" style="color: #0C0303;">&nbsp;Ingresar palpaciones</a></h5>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_servicios" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tabla_palpaciones" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
-                    <th><center>
-                      Fecha
-                    </center></th>
-                    <th><center>
-                      Hora
-                    </center></th>
-                    <th><center>
-                      Tipo
-                    </center></th>
-                    <th><center>
-                      Animal
-                    </center></th>
-                    <th><center>
-                      Padre
-                    </center></th>
-                    <th><center>
-                      Inseminador
-                    </center></th>
-                    <th><center>
-                      Donadora
-                    </center></th>
-                    <th><center>
-                      Acciones
-                    </center></th>
+                    <th><center>Fecha</center></th>
+                    <th><center>Hora</center></th>
+                    <th><center>Animal</center></th>
+                    <th><center>Resultado</center></th>
+                    <th><center>Palpador</center></th>
+                    <th><center>D&iacute;as Pre&ntilde;ez</center></th>
+                    <th><center>Pre&ntilde;ada</center></th>
+                    <th><center>Acciones</center></th>
                   </tr>
                </thead>
                <?php
-                $response = $dataTable->obtener_servicios();
+                $response = $dataTable->obtener_palpaciones();
                 ?>
                <tbody>
                 <?php foreach($response['items'] as $datos){ ?>
                   <tr>
                     <td><?php echo $datos['fecha'] ?></td>
                     <td><?php echo $datos['hora'] ?></td>
-                    <td><?php echo $datos['tipo'] ?></td>
                     <td><?php echo $datos['animal'] ?></td>
-                    <td><?php echo $datos['padre'] ?></td>
-                    <td><?php echo $datos['inseminador'] ?></td>
-                    <td><?php echo $datos['donadora'] ?></td>
+                    <td><?php echo $datos['resultado'] ?></td>
+                    <td><?php echo $datos['palpador'] ?></td>
+                    <td><?php echo $datos['dias_prenez'] ?></td>
+                    <td><?php echo $datos['prenada'] ?></td>
                     <td><center>
-                      <form action="?mod=mservicios" method="POST">
-                        <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_servicio" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
-                        <input type="hidden" name="id_servicios" value="<?php echo $datos['id']?>" readonly>
-                        <button type="submit" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></button>
-                        <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
-                      </form>
+                      <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#detalle_palpacion" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
+                      <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
                     </center></td>
                   </tr>
                 <?php } ?>
@@ -83,13 +63,13 @@
 </section>
 <!-- /.content -->
 <!-- Ventana modal para crear raza -->
-<div class="modal fade" id="info_servicio" style="display: none;">
+<div class="modal fade" id="detalle_palpacion" style="display: none;">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span></button>
-        <h4 class="modal-title">Informaci&oacute;n de Servicio</h4>
+        <h4 class="modal-title">Informaci&oacute;n de Palpaci&oacute;n</h4>
       </div>
       <div class="modal-body">
         <fieldset>
@@ -106,26 +86,36 @@
             <input type="text" class="form-control" id="animal" readonly>
           </div>
           <div class="form-group col-md-3">
-            <label>Tipo</label>
-            <input type="text" class="form-control" id="tipo" readonly>
+            <label>Pre&ntilde;ada</label>
+            <input type="text" class="form-control" id="prenada" readonly>
           </div>
         </fieldset>
         <fieldset>
-          <div class="form-group col-md-3">
-            <label>Inseminador</label>
-            <input type="text" class="form-control" id="inseminador" readonly>
+          <div class="form-group col-md-7">
+            <label>Resultado</label>
+            <input type="text" class="form-control" id="resultado" readonly>
           </div>
           <div class="form-group col-md-3">
-            <label>Padre</label>
-            <input type="text" class="form-control" id="padre" readonly>
+            <label>Palpador</label>
+            <input type="text" class="form-control" id="palpador" readonly>
           </div>
-          <div class="form-group col-md-3">
-            <label>Donadora</label>
-            <input type="text" class="form-control" id="donadora" readonly>
+          <div class="form-group col-md-2">
+            <label>D&iacute;as Pre&ntilde;ez</label>
+            <input type="text" class="form-control" id="prenez" readonly>
           </div>
-          <div class="form-group col-md-3">
-            <label>C&oacute;digo de Pajilla</label>
-            <input type="text" class="form-control" id="pajilla" readonly>
+        </fieldset>
+        <fieldset>
+          <div class="form-group col-md-4">
+            <label>Cuerno</label>
+            <input type="text" class="form-control" id="cuerno" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Nivel de suciedad</label>
+            <input type="text" class="form-control" id="nsuciedad" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Meses de pre&ntilde;ez</label>
+            <input type="text" class="form-control" id="meses" readonly>
           </div>
         </fieldset>
         <fieldset>
@@ -142,13 +132,13 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#tabla_servicios").dataTable({                
+  $("#tabla_palpaciones").dataTable({                
       "sPaginationType": "full_numbers"
   });
 });
 
 function ver(id){
-  $.post("procesos/reproduccion/informacion_servicio.php",
+  $.post("procesos/reproduccion/detalle_palpacion.php",
     {'id':id},
     function(data){
       var data=JSON.parse(data);
@@ -156,31 +146,33 @@ function ver(id){
       document.getElementById('fecha').value=resultado[0].fecha;
       document.getElementById('hora').value=resultado[0].hora;
       document.getElementById('animal').value=resultado[0].animal;
-      document.getElementById('tipo').value=resultado[0].tipo;
-      document.getElementById('inseminador').value=resultado[0].inseminador;
-      document.getElementById('padre').value=resultado[0].padre;
-      document.getElementById('donadora').value=resultado[0].donadora;
-      document.getElementById('pajilla').value=resultado[0].codigo_pajilla;
+      document.getElementById('resultado').value=resultado[0].resultado;
+      document.getElementById('palpador').value=resultado[0].palpador;
+      document.getElementById('prenez').value=resultado[0].dias_prenez;
+      document.getElementById('prenada').value=resultado[0].prenada;
+      document.getElementById('cuerno').value=resultado[0].cuerno;
+      document.getElementById('nsuciedad').value=resultado[0].nivel_suciedad;
+      document.getElementById('meses').value=resultado[0].meses_prenez;
       document.getElementById('notas').value=resultado[0].notas;
-    });
+  });
 }
 
 function eliminar(id){
-  $.confirm({title: 'Desea elminar el servicio?', content:'', icon: 'fa fa-info-circle', 
+  $.confirm({title: 'Desea elminar la palpación?', content:'', icon: 'fa fa-info-circle', 
     buttons: {
       Si: function () {
         close();
         $.ajax({
           type: 'POST',
           dataType: 'json',
-          data: {'id_servicio':id},
-          url: "procesos/reproduccion/eliminar_servicio.php",
+          data: {'id':id},
+          url: "procesos/reproduccion/eliminar_palpacion.php",
           beforeSend: function(){
             $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
           },
           success: function(response){
             if (response.success == true) {
-              $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.href='?mod=vanimales'}}}});
+              $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.href='?mod=palpaciones'}}}});
             }else{
               $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
             }

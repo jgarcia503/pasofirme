@@ -133,4 +133,12 @@
 	'archivo' => 'reproducciones/mservicios.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['palpaciones'] = array(
+	'archivo' => 'reproducciones/palpaciones.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cpalpaciones'] = array(
+	'archivo' => 'reproducciones/cpalpaciones.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
