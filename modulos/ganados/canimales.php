@@ -173,7 +173,7 @@ $response_grupo=$data->query($sql_grupo, array(), array());
         <div class="tab-pane" id="tab_2">
           <fieldset>
             <div class="form-group col-md-4">
-                <label>Padre: </label>
+                <label>Toro: </label>
                 <input type="text" class="form-control" name="padre" id="padre" placeholder="">
             </div>
             <div class="form-group col-md-4">

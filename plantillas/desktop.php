@@ -80,7 +80,7 @@
             ?>
          <!-- End: Left side column. contains the logo and sidebar -->
          <!-- Content Wrapper. Contains page content -->
-         <div class="content-wrapper" style="background-color: #DFDFDF;">
+         <div class="content-wrapper" style="background-color: #ECE8E8;">
             <!-- Content Header (Page header) -->
             <!-- Main content -->
             <section class="content" style="font-size: 9pt;">
@@ -112,7 +112,7 @@
 
 $(function () {
 
-//DatePicker, intsanciado para llamarlo mediante la clase
+// DatePicker, intsanciado para llamarlo mediante la clase
 $.fn.datepicker.dates['es'] = {
     days: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
     daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
@@ -126,18 +126,23 @@ $.fn.datepicker.dates['es'] = {
     weekStart: 0
 };
 
-//datepicker, intsanciado para llamarlo mediante la clase
+// datepicker, intsanciado para llamarlo mediante la clase
 $('.datepicker').datepicker({
     language: "es" 
 });
 
-//daterangepicker, intsanciado para llamarlo mediante la clase
+// daterangepicker, intsanciado para llamarlo mediante la clase
 $('.daterange').daterangepicker({
     language: "es" 
 });
 
 //Datatable, intsanciado para llamarlo mediante la clase
-$('.datatable').DataTable();  
+$('.datatable').DataTable();
+
+$("#tablas").dataTable({
+  "ordering": false,
+  "sPaginationType": "full_numbers"
+});
 
 //Select2, intsanciado para llamarlo mediante la clase
 $(".select2").select2({

@@ -28,15 +28,11 @@ $response_animales=$data->query("SELECT DISTINCT CONCAT(a.numero,' ',a.nombre) a
         <div class="box-body">
             <form action="" role="form" name="frmcpalpaciones" id="frmcpalpaciones" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
               <fieldset>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                   <label>Fecha</label>
                   <input type="text" class="form-control" data-provide="datepicker" name="fecha" data-validation="required" data-validation-error-msg="Complete este campo" readonly>
                 </div>
-                <div class="form-group col-md-3">
-                  <label>Hora</label>
-                  <input type="text" class="form-control timepicker" name="hora" data-validation="required" data-validation-error-msg="Complete este campo">
-                </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                   <label>Animal</label>
                   <select class="form-control" name="animal" id="animal" data-validation="required" data-validation-error-msg="Seleccione animal">
                     <option value="">Seleccione animal</option>
@@ -45,7 +41,7 @@ $response_animales=$data->query("SELECT DISTINCT CONCAT(a.numero,' ',a.nombre) a
                     <?php } ?>
                   </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                   <label>Palpador</label>
                   <select class="form-control" name="palpador" id="palpador" data-validation="required" data-validation-error-msg="Seleccione palpador">
                     <option value="">Seleccione palpador</option>
@@ -75,7 +71,7 @@ $response_animales=$data->query("SELECT DISTINCT CONCAT(a.numero,' ',a.nombre) a
                   </select>
                 </div>
                 <div class="form-group col-md-3" id="div_cuerno">
-                  <label>Cuerno</label>
+                  <label>Cuerno uterino</label>
                   <select class="form-control" name="cuerno" id="cuerno" data-validation="required" data-validation-error-msg="Seleccione cuerno">
                     <option value="">Seleccione cuerno</option>
                     <option value="izquierdo">Izquierdo</option>

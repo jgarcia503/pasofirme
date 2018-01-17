@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_resultados" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>Nombre</center></th>
@@ -35,7 +35,7 @@
                   <tr>
                     <td><?php echo $datos['nombre'] ?></td>
                     <td><center>
-                        <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_palpaciones" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
+                        <label class="btn btn-success" title="Detalle de palpaciones" data-toggle="modal" data-target="#info_palpaciones" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
                         <label class="btn btn-primary" title="Actualizar informaci&oacute;n" data-toggle="modal" data-target="#actualizar_raza" onclick="actualizar('<?php echo $datos['id']?>','<?php echo $datos['nombre']?>','<?php echo $datos['notas']?>');"><i class="fa white fa-edit"></i></label>
                         <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
                     </center></td>
@@ -149,12 +149,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_resultados").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 // Funcion que nos permitira mandar los datos a ingresar
 $(document).ready(function () {
   $('#guardar').click(function () {

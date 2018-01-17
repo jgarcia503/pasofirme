@@ -21,7 +21,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table id="tabla" class="datatable table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>

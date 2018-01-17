@@ -21,8 +21,8 @@ $params['icuerno']=($params['resultado']=='9')?$params['cuerno']:'';
 $params['igrado_suciedad']=($params['resultado']=='11')?$params['grado_suciedad']:'';
 $params['imeses']=($params['prenada']=='si')?$params['meses']:'';
 
-$sql="INSERT INTO palpaciones VALUES(default, :fecha, :hora, :animal, :iresultado, :palpador, :dias_prenez, :prenada, trim(:notas), :icuerno, :igrado_suciedad, :imeses) RETURNING id";
-$params_sql=array("fecha", "hora", "animal", "iresultado", "palpador", "dias_prenez", "prenada", "notas", "icuerno", "igrado_suciedad", "imeses");
+$sql="INSERT INTO palpaciones VALUES(default, :fecha, :animal, :iresultado, :palpador, :dias_prenez, :prenada, trim(:notas), :icuerno, :igrado_suciedad, :imeses) RETURNING id";
+$params_sql=array("fecha", "animal", "iresultado", "palpador", "dias_prenez", "prenada", "notas", "icuerno", "igrado_suciedad", "imeses");
 $response_sql=$data->query($sql, $params, $params_sql, true);
 
 if ($response_sql['insertId'] > 0) {

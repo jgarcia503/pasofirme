@@ -145,4 +145,12 @@
 	'archivo' => 'reproducciones/respalpaciones.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['partos'] = array(
+	'archivo' => 'reproducciones/partos.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cpartos'] = array(
+	'archivo' => 'reproducciones/cparto.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_servicios" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -36,7 +36,7 @@
                       Animal
                     </center></th>
                     <th><center>
-                      Padre
+                      Toro
                     </center></th>
                     <th><center>
                       Inseminador
@@ -116,7 +116,7 @@
             <input type="text" class="form-control" id="inseminador" readonly>
           </div>
           <div class="form-group col-md-3">
-            <label>Padre</label>
+            <label>Toro</label>
             <input type="text" class="form-control" id="padre" readonly>
           </div>
           <div class="form-group col-md-3">
@@ -141,12 +141,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_servicios").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 function ver(id){
   $.post("procesos/reproduccion/informacion_servicio.php",
     {'id':id},

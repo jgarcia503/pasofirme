@@ -37,26 +37,6 @@ $response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = 
                   <input type="text" class="form-control timepicker" name="hora" data-validation="required" data-validation-error-msg="Complete este campo">
                 </div>
                 <div class="form-group col-md-3">
-                  <label>Animal</label>
-                  <select class="form-control" name="animal" id="animal" data-validation="required" data-validation-error-msg="Seleccione animal">
-                    <option value="">Seleccione animal</option>
-                    <?php foreach ($response_hembra['items'] as $key_hembra) { ?>
-                      <option value="<?php echo $key_hembra['numero']?> <?php echo $key_hembra['nombre']?>"><?php echo $key_hembra['numero']?> <?php echo $key_hembra['nombre']?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <label>Padre</label>
-                  <select class="form-control" name="padre" id="padre" data-validation="required" data-validation-error-msg="Seleccione padre">
-                    <option value="">Seleccione padre</option>
-                    <?php foreach ($response_macho['items'] as $key_padre) { ?>
-                    <option value="<?php echo $key_padre['numero']?>-<?php echo $key_padre['nombre']?>"><?php echo $key_padre['numero']?>-<?php echo $key_padre['nombre']?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </fieldset>
-              <fieldset>
-                <div class="form-group col-md-3">
                   <label>Tipo</label>
                   <select class="form-control" name="tipo" id="tipo" data-validation="required" data-validation-error-msg="Seleccione tipo">
                     <option value="">Seleccione tipo</option>
@@ -64,6 +44,26 @@ $response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = 
                     <option value="inseminacion">Inseminaci&oacute;n</option>
                     <option value="fiv">Fecundaci&oacute;n in vitro</option>
                     <option value="te">Transferencia de embriones</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3" id="div_animal">
+                  <label>Vaca</label>
+                  <select class="form-control" name="animal" id="animal" data-validation="required" data-validation-error-msg="Seleccione animal">
+                    <option value="">Seleccione animal</option>
+                    <?php foreach ($response_hembra['items'] as $key_hembra) { ?>
+                      <option value="<?php echo $key_hembra['numero']?> <?php echo $key_hembra['nombre']?>"><?php echo $key_hembra['numero']?> <?php echo $key_hembra['nombre']?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="form-group col-md-3" id="div_padre">
+                  <label>Toro</label>
+                  <select class="form-control" name="padre" id="padre" data-validation="required" data-validation-error-msg="Seleccione toro">
+                    <option value="">Seleccione toro</option>
+                    <?php foreach ($response_macho['items'] as $key_padre) { ?>
+                    <option value="<?php echo $key_padre['numero']?>-<?php echo $key_padre['nombre']?>"><?php echo $key_padre['numero']?>-<?php echo $key_padre['nombre']?></option>
+                    <?php } ?>
                   </select>
                 </div>
                 <div class="form-group col-md-3" id="div_donadora">
@@ -82,6 +82,7 @@ $response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = 
                     <option value="<?php echo $key_pajilla['codigo_pajilla']?>"><?php echo $key_pajilla['codigo_toro']?>-<?php echo $key_pajilla['codigo_pajilla']?></option>
                     <?php } ?>
                   </select>
+                </div>
               </fieldset>
               <fieldset class="col-md-12">
                 <div class="form-group">
@@ -110,8 +111,16 @@ $(document).ready(function(){
   $("#div_inseminador").hide();
   $("#pajilla").prop('disable', true);
   $("#div_pajilla").hide();
+  $("#padre").prop('disable', true);
+  $("#div_padre").hide();
+  $("#animal").prop('disable', true);
+  $("#div_animal").hide();
 });
 $("#tipo").on('change', function(){
+  $("#div_padre").show();
+  $("#padre").prop('disable', false);
+  $("#div_animal").show();
+  $("#animal").prop('disable', false);
   switch($(this).val()){
     case 'monta directa':
       $("#donadora").prop('disable', true);
@@ -153,6 +162,10 @@ $("#tipo").on('change', function(){
       $("#div_inseminador").hide();
       $("#pajilla").prop('disable', true);
       $("#div_pajilla").hide();
+      $("#padre").prop('disable', true);
+      $("#div_padre").hide();
+      $("#animal").prop('disable', true);
+      $("#div_animal").hide();
     break;
   }
 });

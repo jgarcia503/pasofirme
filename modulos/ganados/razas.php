@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_razas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -131,12 +131,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_razas").dataTable({
-      "sPaginationType": "full_numbers"
-  });
-});
-
 // Funcion que nos permitira mandar los datos a ingresar
 $(document).ready(function () {
     $('#guardar').click(function () {

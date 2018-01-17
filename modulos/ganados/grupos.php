@@ -25,7 +25,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_colores" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -219,9 +219,6 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#tabla_colores").dataTable({
-      "sPaginationType": "full_numbers"
-  });
   $('#div_pbotella').hide();
   $('#produccion_botellas').prop('disable', true);
   $('#div_dnacida').hide();

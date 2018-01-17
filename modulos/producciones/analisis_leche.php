@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_analisis_leche" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -157,12 +157,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_analisis_leche").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 function ver_pdf(id){
    $.ajax({
       data: {'id':id},

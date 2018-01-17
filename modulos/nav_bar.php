@@ -42,6 +42,7 @@
               <li><a href="?mod=servicios">Servicios</a></li>
               <li><a href="?mod=palpaciones">Palpaciones</a></li>
               <li><a href="?mod=respalpaciones">Resultado de palpacion</a></li>
+              <li><a href="?mod=partos">Partos</a></li>
             </ul>
           </li>
         </ul>

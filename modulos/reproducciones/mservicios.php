@@ -53,9 +53,9 @@ foreach ($response_servicios['items'] as $detalle) { ?>
                   </select>
                 </div>
                 <div class="form-group col-md-3">
-                  <label>Padre</label>
-                  <select class="form-control" name="padre" id="padre" data-validation="required" data-validation-error-msg="Seleccione padre">
-                    <option value="">Seleccione padre</option>
+                  <label>Toro</label>
+                  <select class="form-control" name="padre" id="padre" data-validation="required" data-validation-error-msg="Seleccione toro">
+                    <option value="">Seleccione toro</option>
                     <?php foreach ($response_macho['items'] as $key_macho) { ?>
                     <?php if ($detalle['padre']==$key_macho['animal_macho']){ ?>
                     <option selected value="<?php echo $detalle['padre']?>"><?php echo $detalle['padre'] ?></option>

@@ -20,7 +20,7 @@
         </div> -->
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_cosechas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -100,12 +100,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_cosechas").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 //Carga el id y nombre de la cosecha en la modal
 function opciones_cosechas(id_proyecto, nombre){
   document.getElementById('proyecto_id').value=id_proyecto;

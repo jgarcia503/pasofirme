@@ -20,11 +20,10 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_palpaciones" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>Fecha</center></th>
-                    <th><center>Hora</center></th>
                     <th><center>Animal</center></th>
                     <th><center>Resultado</center></th>
                     <th><center>Palpador</center></th>
@@ -40,7 +39,6 @@
                 <?php foreach($response['items'] as $datos){ ?>
                   <tr>
                     <td><?php echo $datos['fecha'] ?></td>
-                    <td><?php echo $datos['hora'] ?></td>
                     <td><?php echo $datos['animal'] ?></td>
                     <td><?php echo $datos['resultado'] ?></td>
                     <td><?php echo $datos['palpador'] ?></td>
@@ -131,12 +129,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_palpaciones").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 function ver(id){
   $.post("procesos/reproduccion/detalle_palpacion.php",
     {'id':id},

@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_proyecto" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -210,9 +210,6 @@ $(document).ready(function(){
   $('#modal_proyecto').on('hidden.bs.modal', function (e) {
       $('[name=detalle]').blur();
     });
-  $("#tabla_proyecto").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
 });
 
 function detalle_siembra(id) {

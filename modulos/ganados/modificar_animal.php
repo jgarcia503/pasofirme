@@ -181,7 +181,7 @@ if (isset($_POST['id_animal'])) {
         <div class="tab-pane" id="tab_2">
           <fieldset>
             <div class="form-group col-md-4">
-                <label>Padre: </label>
+                <label>Toro: </label>
                 <input type="text" class="form-control" name="padre" id="padre" data-validation="required" data-validation-error-msg="" placeholder="" value="<?php echo $response_animales['items'][0]['padre']?>">
             </div>
             <div class="form-group col-md-4">

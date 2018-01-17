@@ -20,7 +20,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-             <table role="grid" id="tabla_peso_leche" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
+             <table role="grid" id="tablas" class="table table-bordered table-responsive table-stripped table-hover table-condensed">
                <thead>
                   <tr class="bg bg-info">
                     <th><center>
@@ -112,12 +112,6 @@
   <!-- /.modal-dialog -->
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("#tabla_peso_leche").dataTable({                
-      "sPaginationType": "full_numbers"
-  });
-});
-
 function detalle_peso(id) {
   $.post("procesos/produccion/detalle_peso.php", 
     { "id_peso": id }, 
