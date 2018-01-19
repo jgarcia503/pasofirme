@@ -52,6 +52,13 @@
               <li><a href="?mod=causa_mortalidad">Causa de mortalidad</a></li>
             </ul>
           </li>
+          <li>
+            <a href="#"><i class="fa fa-stethoscope"></i> Sanidad <i class="fa fa-angle-left pull-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a href="?mod=controles_sanitarios">Controles sanitarios</a></li>
+              <li><a href="?mod=eventos_sanitarios">Eventos sanitarios</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="treeview">

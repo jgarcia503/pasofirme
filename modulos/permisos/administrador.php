@@ -162,4 +162,13 @@
 	'archivo' => 'mortalidades/causa_mortalidad.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	//Modulos de eventos sanitarios
+	$conf['controles_sanitarios'] = array(
+	'archivo' => 'sanidades/controles_sanitarios.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['eventos_sanitarios'] = array(
+	'archivo' => 'sanidades/eventos_sanitarios.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

@@ -379,6 +379,52 @@ class dataTable {
         unset($query);
     }
 
+    function obtener_controles_sanitarios() { 
+        $managerDB = new managerDB(); 
+        $connection = $managerDB->conectar("pgsql"); 
+        if ($connection!=null) {
+            $response=array('success'=>true);
+                $sql = "SELECT DISTINCT animal FROM controles_sanitarios";
+            try {
+                $query=$connection->prepare($sql);
+                    $query->execute();
+                $response['items']=$query->fetchAll(PDO::FETCH_ASSOC);
+                $response['total']=$query->rowCount();
+            } catch(PDOException $error) { 
+                if ($transaction) $connection->rollback();
+                $response= array('success'=>false, 'error'=>$error->getMessage());
+            }
+        } else {
+            $response= array('success'=>false, 'error'=>'No está conectado al servidor de bases de datos.');
+        }
+        return $response;
+        unset($connection);
+        unset($query);
+    }
+
+    function obtener_eventos_sanitarios() { 
+        $managerDB = new managerDB(); 
+        $connection = $managerDB->conectar("pgsql"); 
+        if ($connection!=null) {
+            $response=array('success'=>true);
+                $sql = "SELECT * FROM eventos_sanitarios";
+            try {
+                $query=$connection->prepare($sql);
+                    $query->execute();
+                $response['items']=$query->fetchAll(PDO::FETCH_ASSOC);
+                $response['total']=$query->rowCount();
+            } catch(PDOException $error) { 
+                if ($transaction) $connection->rollback();
+                $response= array('success'=>false, 'error'=>$error->getMessage());
+            }
+        } else {
+            $response= array('success'=>false, 'error'=>'No está conectado al servidor de bases de datos.');
+        }
+        return $response;
+        unset($connection);
+        unset($query);
+    }
+
     function calcular_costo_proyecto($id){
         $managerDB = new managerDB(); 
         $connection = $managerDB->conectar("pgsql"); 
