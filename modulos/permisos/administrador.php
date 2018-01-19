@@ -158,4 +158,8 @@
 	'archivo' => 'mortalidades/mortalidad.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['causa_mortalidad'] = array(
+	'archivo' => 'mortalidades/causa_mortalidad.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

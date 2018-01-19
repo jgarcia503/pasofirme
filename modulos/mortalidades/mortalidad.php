@@ -55,7 +55,7 @@ $response_causa=$data->query("SELECT * FROM causas_mortalidades");
                     <td><?php echo $datos['animal'] ?></td>
                     <td><?php echo $datos['causa'] ?></td>
                     <td><center>
-                      <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_servicio" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
+                      <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#infor_mortalidad" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
                     </center></td>
                   </tr>
                 <?php } ?>
@@ -128,7 +128,7 @@ $response_causa=$data->query("SELECT * FROM causas_mortalidades");
   <!-- /.modal-dialog -->
 </div>
 <!-- Ventana modal para crear raza -->
-<div class="modal fade" id="info_servicio" style="display: none;">
+<div class="modal fade" id="infor_mortalidad" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

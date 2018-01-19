@@ -49,7 +49,7 @@
             <a href="#"><i class="glyphicon glyphicon-alert"></i> Mortalidad <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
               <li><a href="?mod=mortalidad">Mortalidad</a></li>
-              <li><a href="#">Causa de mortalidad</a></li>
+              <li><a href="?mod=causa_mortalidad">Causa de mortalidad</a></li>
             </ul>
           </li>
         </ul>
