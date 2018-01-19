@@ -153,4 +153,9 @@
 	'archivo' => 'reproducciones/cparto.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	//Modulos de mortalidad
+	$conf['mortalidad'] = array(
+	'archivo' => 'mortalidades/mortalidad.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

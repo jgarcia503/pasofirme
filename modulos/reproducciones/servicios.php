@@ -8,7 +8,7 @@
     &nbsp;&nbsp;
     <i class="fa fa-angle-right" style="color: #0C0303"></i>
     &nbsp;&nbsp;
-    <li class="active"><i class="fa fa-joomla"></i>&nbsp;Administraci&oacute;n de sarvicios</li>
+    <li class="active"><i class="fa fa-joomla"></i>&nbsp;Administraci&oacute;n de servicios</li>
   </ol>
 </section>
 <!-- Main content -->
