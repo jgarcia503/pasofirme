@@ -57,6 +57,7 @@
             <ul class="treeview-menu">
               <li><a href="?mod=controles_sanitarios">Controles sanitarios</a></li>
               <li><a href="?mod=eventos_sanitarios">Eventos sanitarios</a></li>
+              <li><a href="?mod=cmt">Pruebas CMT</a></li>
             </ul>
           </li>
         </ul>

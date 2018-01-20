@@ -171,4 +171,12 @@
 	'archivo' => 'sanidades/eventos_sanitarios.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['cmt'] = array(
+	'archivo' => 'sanidades/cmt.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['cprueba_cmt'] = array(
+	'archivo' => 'sanidades/cprueba_cmt.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>
