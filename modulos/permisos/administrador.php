@@ -183,4 +183,8 @@
 	'archivo' => 'sanidades/visita_medica.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['cvisita_medica'] = array(
+	'archivo' => 'sanidades/cvisita_medica.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

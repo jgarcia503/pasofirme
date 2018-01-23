@@ -37,7 +37,7 @@
                     <td><?php echo $datos['fecha'] ?></td>
                     <td><?php echo $datos['tipo_visita'] ?></td>
                     <td><center>
-                      <label class="btn btn-success" title="Detalle de eventos" data-toggle="modal" data-target="#ieventos_sanitarios" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
+                      <label class="btn btn-success" title="Detalle de visita m&eacute;mida" data-toggle="modal" data-target="#idetalle_visitamedica" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
                     </center></td>
                   </tr>
                 <?php } ?>
@@ -51,3 +51,36 @@
   <!-- /.row -->
 </section>
 <!-- /.content -->
+<!-- Ventana modal para crear raza -->
+<div class="modal fade" id="idetalle_visitamedica" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Informaci&oacute;n de evento sanitario</h4>
+      </div>
+      <div class="modal-body">
+        <fieldset>
+          <div class="form-group col-md-12">
+            <label>Tratamiento</label>
+            <textarea name="inotas" id="inotas" rows="30" class="form-control" readonly style="text-align: justify;"></textarea>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+function ver(id){
+  $.post("procesos/sanidad/detalle_visita_medica.php",
+    {'id':id},
+    function(data){
+      var data=JSON.parse(data);
+      var resultado=data.items;
+      document.getElementById('inotas').value = resultado[0].descripcion;
+  });
+}
+</script>
