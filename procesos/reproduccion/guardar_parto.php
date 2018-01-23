@@ -3,8 +3,8 @@ include("../../sql/class.data.php");
 $data = new data();
 $params = $_POST;
 
-$sql="INSERT INTO partos VALUES(default, :fecha, :animal, :cria, :hora, :empleado, trim(:notas)) RETURNING id";
-$params_sql=array("fecha", "animal", "cria", "hora", "empleado", "notas");
+$sql="INSERT INTO partos VALUES(default, :fecha, :animal, :cria, :hora, :empleado, trim(:notas), :sexo, :estado) RETURNING id";
+$params_sql=array("fecha", "animal", "cria", "hora", "empleado", "notas", "sexo", "estado");
 $response_sql=$data->query($sql, $params, $params_sql, true);
 
 if ($response_sql['insertId'] > 0) {

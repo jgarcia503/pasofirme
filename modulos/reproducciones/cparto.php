@@ -28,40 +28,13 @@ $response_contactos=$data->query("SELECT nombre FROM contactos WHERE tipo='emple
       <div class="box-body">
           <form action="" role="form" name="frmcparto" id="frmcparto" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
             <fieldset>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label>Fecha</label>
                 <input type="text" class="form-control" data-provide="datepicker" name="fecha" data-validation="required" data-validation-error-msg="Complete este campo" readonly>
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label>Hora</label>
                 <input type="text" class="form-control timepicker" name="hora" data-validation="required" data-validation-error-msg="Complete este campo">
-              </div>
-            </fieldset>
-            <fieldset>
-              <div class="form-group col-md-4">
-                <label>Animal</label>
-                <div class="input-group">
-                  <input type="text" class="form-control awesomplete" name="animal" id="animal" list="animales" data-minchars="1">
-                  <datalist id="animales">
-                    <?php foreach ($response_animales['items'] as $key_animales) { ?>
-                      <option value="<?php echo $key_animales['animales'] ?>"><?php echo $key_animales['animales'] ?></option>
-                    <?php } ?>
-                  </datalist>
-                  <div class="input-group-btn">
-                    <label class="btn btn-success" title="Agregar animal" data-toggle="modal" data-target="#crear_animal"><i class="fa white fa-plus-circle"></i></label>
-                  </div>
-                  <!-- /btn-group -->
-                </div>
-              </div>
-              <div class="form-group col-md-4">
-                <label>Cr&iacute;a</label>
-                <div class="input-group">
-                  <input type="text" class="form-control awesomplete" name="cria" id="cria" list="animales" data-minchars="1">
-                  <div class="input-group-btn">
-                    <label class="btn btn-success" title="Agregar cr&iacute;a" data-toggle="modal" data-target="#crear_animal"><i class="fa white fa-plus-circle"></i></label>
-                  </div>
-                  <!-- /btn-group -->
-                </div>
               </div>
               <div class="form-group col-md-4">
                 <label>Empleado</label>
@@ -71,6 +44,27 @@ $response_contactos=$data->query("SELECT nombre FROM contactos WHERE tipo='emple
                   <option value="<?php echo $key_contactos['nombre'] ?>"><?php echo $key_contactos['nombre'] ?></option>
                   <?php } ?>
                 </select>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="form-group col-md-6">
+                <label>Animal</label>
+                <input type="text" class="form-control awesomplete" name="animal" id="animal" list="animales" data-minchars="1">
+                <datalist id="animales">
+                  <?php foreach ($response_animales['items'] as $key_animales) { ?>
+                  <option value="<?php echo $key_animales['animales'] ?>"><?php echo $key_animales['animales'] ?></option>
+                  <?php } ?>
+                </datalist>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Cr&iacute;a</label>
+                <div class="input-group">
+                  <input type="text" class="form-control awesomplete" name="cria" id="cria" readonly>
+                  <div class="input-group-btn">
+                    <label class="btn btn-success" title="Agregar cr&iacute;a" data-toggle="modal" data-target="#crear_animal"><i class="fa white fa-plus-circle"></i></label>
+                  </div>
+                  <!-- /btn-group -->
+                </div>
               </div>
             </fieldset>
             <fieldset>
@@ -212,10 +206,12 @@ $("#estado").on('change', function(){
       $("#div_nombre").hide();
       $("#pnacimiento").prop('disable', true);
       $("#div_pnacimiento").hide();
+      $("#fnacimiento").prop('disable', true);
+      $("#div_fnacimiento").hide();
       $("#div_notas").show();
       $("#notas").prop('disable', false);
-      $("#div_empleado").show();
-      $("#empleado").prop('disable', false);
+      $("#empleado").prop('disable', true);
+      $("#div_empleado").hide();
     break;
     default:
       $("#div_numero").show();
@@ -234,6 +230,8 @@ $("#estado").on('change', function(){
 
 //Guardar datos a la BD
 $('#guardar_animal').click(function () {
+  var numero=$("[name=numero]").val();
+  var nombre=$("[name=nombre]").val();
     $.validate({
        onSuccess : function(form) {
           var formulario = $('#frmcanimal').serializeArray();
@@ -246,11 +244,17 @@ $('#guardar_animal').click(function () {
                   $.blockUI({ message: '<h1><img src="img/loading.gif"/> Espere un momento...</h1>' });
               },
               success: function(response){
-                  if (response.success == true) {
-                      $.confirm({theme: 'supervan', icon: 'fa fa-check-circle', title: 'Operacion Exitosa', content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){location.reload();}}}});
+                console.log(response);
+                  if (response.success == true || response.success == false) {
+                      $.confirm({theme: 'supervan', icon: response.icon, title: response.titulo, content: response.mensaje, type: 'blue', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                      if (response.success==true) {
+                        $("[name=cria]").val(numero+'-'+nombre);
+                      }
                   }else{
-                      $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Verifique su informacion', content: response.mensaje, type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});
+                      $("[name=cria]").val('-');
                   }
+                  $("#frmcparto").append(response.item);
+                  $("#crear_animal").modal('hide');
               },
               error: function() {
                   $.confirm({theme: 'supervan', icon: 'fa fa-exclamation', title: 'Ocurrio un error al realizar la transaccion', content: 'Error', type: 'red', typeAnimated: true, buttons: { tryAgain: { text: 'Aceptar', btnClass: 'btn-primary', action: function(){close();}}}});

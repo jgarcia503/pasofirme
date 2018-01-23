@@ -8,21 +8,13 @@ if ($params['estado'] != 'muerto') {
 	$params_sql=array("numero", "nombre", "fnacimiento", "pnacimiento", "sexo", "estado");
 	$response_sql=$data->query($sql, $params, $params_sql, true);
 	if ($response_sql['insertId'] > 0) {
-		$response=array('success'=>true, 'mensaje'=>'Animal guardado correctamente');
+		$response=array('success'=>true, 'mensaje'=>'Animal guardado correctamente', 'titulo'=>'Operacion Exitosa', 'icon'=>'fa fa-check-circle', 'item'=>"<input type='hidden' value='".$params['estado']."' name='estado' readonly>"."<input type='hidden' value='".$params['sexo']."' name='sexo' readonly>");
 	}else{
-		$response=array('success'=>false, 'mensaje'=>'Error al intentar guardar los datos');
+		$response=array('success'=>false, 'mensaje'=>'Error al intentar guardar los datos', 'titulo'=>'Verifique su informacion', 'icon'=>'fa fa-exclamation');
 	}
 }else{
-	$sql="INSERT INTO partos(fecha, contacto, notas, sexo_cria, estado) VALUES(:fnacimiento, :empleado, :notas, :sexo, :estado) RETURNING id";
-	$params_sql=array("fnacimiento", "empleado", "notas", "sexo", "estado");
-	$response_sql=$data->query($sql, $params, $params_sql, true);
-	if ($response_sql['insertId'] > 0) {
-		$response=array('success'=>true, 'mensaje'=>'Parto guardado correctamente');
-	}else{
-		$response=array('success'=>false, 'mensaje'=>'Error al intentar guardar los datos');
-	}
+	$response=array('item'=>"<input type='hidden' value='".$params['estado']."' name='estado' readonly>"."<input type='hidden' value='".$params['sexo']."' name='sexo' readonly>");
 }
-
 
 echo json_encode($response);
 ?>
