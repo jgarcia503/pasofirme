@@ -5,7 +5,6 @@ session_start();
 include("../../sql/class.data.php");
 $data = new data();
 $params = $_POST;
-//print_r($params);
 $items  = array();
 $encontrado = false;
 $sql="SELECT regexp_split_to_table(rtrim(numero,','),',') num_animal, regexp_split_to_table(rtrim(nombre,','),',') animal, regexp_split_to_table(rtrim(peso,','),',') peso FROM bit_peso_animal WHERE id = :id_panimal";

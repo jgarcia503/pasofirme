@@ -57,18 +57,13 @@
                   <tr>
                     <td><?php echo $datos['fecha'] ?></td>
                     <td><?php echo $datos['hora'] ?></td>
-                    <td><?php echo $datos['tipo'] ?></td>
+                    <td><?php echo $datos['nombre'] ?></td>
                     <td><?php echo $datos['animal'] ?></td>
                     <td><?php echo $datos['padre'] ?></td>
                     <td><?php echo $datos['inseminador'] ?></td>
                     <td><?php echo $datos['donadora'] ?></td>
                     <td><center>
-                      <form action="?mod=mservicios" method="POST">
-                        <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_servicio" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
-                        <input type="hidden" name="id_servicios" value="<?php echo $datos['id']?>" readonly>
-                        <button type="submit" class="btn btn-primary" title="Actualizar informaci&oacute;n"><i class="fa white fa-edit"></i></button>
-                        <label class="btn btn-danger" title="Eliminar" onclick="eliminar('<?php echo $datos['id']?>')"><i class="fa white fa-trash"></i></label>
-                      </form>
+                      <label class="btn btn-success" title="Detalle de servicios" data-toggle="modal" data-target="#info_servicio" onclick="ver('<?php echo $datos['id']?>')"><i class="fa white fa-eye"></i></label>
                     </center></td>
                   </tr>
                 <?php } ?>
@@ -150,7 +145,7 @@ function ver(id){
       document.getElementById('fecha').value=resultado[0].fecha;
       document.getElementById('hora').value=resultado[0].hora;
       document.getElementById('animal').value=resultado[0].animal;
-      document.getElementById('tipo').value=resultado[0].tipo;
+      document.getElementById('tipo').value=resultado[0].nombre;
       document.getElementById('inseminador').value=resultado[0].inseminador;
       document.getElementById('padre').value=resultado[0].padre;
       document.getElementById('donadora').value=resultado[0].donadora;

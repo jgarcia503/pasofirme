@@ -153,6 +153,14 @@
 	'archivo' => 'reproducciones/cparto.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['plantilla_requisicion'] = array(
+	'archivo' => 'reproducciones/plantilla_requisicion.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['mplantilla_requisicion'] = array(
+	'archivo' => 'reproducciones/mplantilla_requisicion.php',
+	'layout' => LAYOUT_DESKTOP
+	);
 	//Modulos de mortalidad
 	$conf['mortalidad'] = array(
 	'archivo' => 'mortalidades/mortalidad.php',

@@ -246,7 +246,7 @@ class dataTable {
         $connection = $managerDB->conectar("pgsql"); 
         if ($connection!=null) {
             $response=array('success'=>true);
-                $sql = "SELECT * FROM servicios ORDER BY fecha DESC";
+                $sql = "SELECT s.*, c.nombre FROM servicios s INNER JOIN cat_tipos_servicios c ON s.tipo = c.id::character varying ORDER BY s.fecha DESC";
             try {
                 $query=$connection->prepare($sql);
                     $query->execute();
@@ -454,6 +454,29 @@ class dataTable {
         if ($connection!=null) {
             $response=array('success'=>true);
                 $sql = "SELECT * FROM visita_medica";
+            try {
+                $query=$connection->prepare($sql);
+                    $query->execute();
+                $response['items']=$query->fetchAll(PDO::FETCH_ASSOC);
+                $response['total']=$query->rowCount();
+            } catch(PDOException $error) { 
+                if ($transaction) $connection->rollback();
+                $response= array('success'=>false, 'error'=>$error->getMessage());
+            }
+        } else {
+            $response= array('success'=>false, 'error'=>'No está conectado al servidor de bases de datos.');
+        }
+        return $response;
+        unset($connection);
+        unset($query);
+    }
+
+    function obtener_plantilla_requisicion() { 
+        $managerDB = new managerDB(); 
+        $connection = $managerDB->conectar("pgsql"); 
+        if ($connection!=null) {
+            $response=array('success'=>true);
+                $sql = "SELECT b.id, b.nombre FROM plantilla_servicios_requisicion_enc a JOIN cat_tipos_servicios b ON a.id_tipo=b.id";
             try {
                 $query=$connection->prepare($sql);
                     $query->execute();

@@ -43,6 +43,7 @@
               <li><a href="?mod=palpaciones">Palpaciones</a></li>
               <li><a href="?mod=respalpaciones">Resultado de palpacion</a></li>
               <li><a href="?mod=partos">Partos</a></li>
+              <li><a href="?mod=plantilla_requisicion">Plantilla requisicion servicio</a></li>
             </ul>
           </li>
           <li>

@@ -67,7 +67,7 @@
 <link rel="stylesheet" href="plugins/select2/select2.min.css">
 <script src="plugins/select2/select2.full.min.js"></script>
    </head>
-   <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+   <body class="hold-transition skin-green sidebar-mini sidebar-collapse">
       <div class="wrapper">
          <!--  Start: header  -->
          <?php include ("modulos/header.php"); ?>
@@ -205,3 +205,5 @@ $(".timepicker").timepicker({
 <?php unset($_SESSION['detalle_peso_animal']); ?>
 <?php unset($_SESSION['peso_animal']); ?>
 <?php unset($_SESSION['detalle_prueba_cmt']); ?>
+<?php unset($_SESSION['detalle_plantilla']); ?>
+<?php unset($_SESSION['plantilla_requisicion']); ?>

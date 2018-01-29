@@ -1,7 +1,8 @@
 <?php
-$response_hembra=$data->query("SELECT * FROM animales WHERE sexo = 'Hembra'", array(), array());
-$response_macho=$data->query("SELECT * FROM animales WHERE sexo = 'Macho'", array(), array());
-$response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = true", array(), array());
+$response_hembra=$data->query("SELECT * FROM animales WHERE sexo = 'Hembra'");
+$response_macho=$data->query("SELECT * FROM animales WHERE sexo = 'Macho'");
+$response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = true");
+$response_servicio=$data->query("SELECT * FROM cat_tipos_servicios");
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -28,22 +29,25 @@ $response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = 
         <div class="box-body">
             <form action="" role="form" name="frmcservicios" id="frmcservicios" enctype="multipart/form-data" autocomplete="off" onsubmit="return false">
               <fieldset>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                   <label>Fecha</label>
-                  <input type="text" class="form-control" data-provide="datepicker" name="fecha" data-validation="required" data-validation-error-msg="Complete este campo" readonly>
+                  <input type="text" class="form-control" data-provide="datepicker" name="fecha" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="dd-mm-yyyy" readonly>
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                   <label>Hora</label>
-                  <input type="text" class="form-control timepicker" name="hora" data-validation="required" data-validation-error-msg="Complete este campo">
+                  <input type="text" class="form-control timepicker" name="hora" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="hh:mm">
+                </div>
+                <div class="form-group col-md-2">
+                  <label>Hora visualizaci&oacute;n en celo</label>
+                  <input type="text" class="form-control timepicker" name="horavisualizacion" data-validation="required" data-validation-error-msg="Complete este campo" placeholder="hh:mm">
                 </div>
                 <div class="form-group col-md-3">
                   <label>Tipo</label>
                   <select class="form-control" name="tipo" id="tipo" data-validation="required" data-validation-error-msg="Seleccione tipo">
                     <option value="">Seleccione tipo</option>
-                    <option value="monta directa">Monta directa</option>
-                    <option value="inseminacion">Inseminaci&oacute;n</option>
-                    <option value="fiv">Fecundaci&oacute;n in vitro</option>
-                    <option value="te">Transferencia de embriones</option>
+                    <?php foreach ($response_servicio['items'] as $key_servicio) { ?>
+                    <option value="<?php echo $key_servicio['id'] ?>"><?php echo $key_servicio['nombre'] ?></option>
+                    <?php } ?>
                   </select>
                 </div>
                 <div class="form-group col-md-3" id="div_animal">
@@ -84,8 +88,8 @@ $response_pajilla=$data->query("SELECT * FROM pajillas_toros WHERE disponible = 
                   </select>
                 </div>
               </fieldset>
-              <fieldset class="col-md-12">
-                <div class="form-group">
+              <fieldset>
+                <div class="form-group col-md-12">
                   <label>Notas</label>
                   <textarea name="notas" class="form-control" rows="5"></textarea>
                 </div>
@@ -122,7 +126,7 @@ $("#tipo").on('change', function(){
   $("#div_animal").show();
   $("#animal").prop('disable', false);
   switch($(this).val()){
-    case 'monta directa':
+    case '1':
       $("#donadora").prop('disable', true);
       $("#div_donadora").hide();
       $("#inseminador").prop('disable', true);
@@ -130,7 +134,7 @@ $("#tipo").on('change', function(){
       $("#pajilla").prop('disable', true);
       $("#div_pajilla").hide();
     break;
-    case 'inseminacion':
+    case '2':
       $("#donadora").prop('disable', true);
       $("#div_donadora").hide();
       $("#div_inseminador").show();
@@ -139,7 +143,7 @@ $("#tipo").on('change', function(){
       $("#pajilla").prop('disable', false);
       document.getElementById('donadora').value = '';
     break;
-    case 'fiv':
+    case '3':
       $("#div_donadora").show();
       $("#donadora").prop('disable', false);
       $("#div_inseminador").show();
@@ -147,7 +151,7 @@ $("#tipo").on('change', function(){
       $("#div_pajilla").show();
       $("#pajilla").prop('disable', false);
     break;
-    case 'te':
+    case '4':
       $("#div_donadora").show();
       $("#donadora").prop('disable', false);
       $("#div_inseminador").show();
