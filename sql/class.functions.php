@@ -1,7 +1,9 @@
 <?php
 /**
-* 
-*/
+ * Description of connDB
+ * Copyright(c) 2018
+ * @author JOSE ENRIQUE GARCIA
+ **/
 class kardex
 {
 	//constructor
