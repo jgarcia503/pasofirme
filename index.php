@@ -12,9 +12,11 @@ if (!ini_get('display_errors')) {
 include('conf.php');
 include('sql/class.data.php');
 include('sql/class.dataTable.php');
+include('sql/class.functions.php');
 
 $data = new data();
 $dataTable = new dataTable();
+$kardex = new kardex();
 if (isset($_GET['mod'])) {
     $modulo = $_GET['mod'];
 } else {

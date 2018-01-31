@@ -198,6 +198,7 @@ $(".timepicker").timepicker({
 <script src="plugins/fastclick/fastclick.min.js"></script>
 <script src="plugins/JqueryConfirm/js/jquery-confirm.js"></script>
 <script src="plugins/jtimepicker/jquery.timepicker.js"></script>
+<script src="plugins/moment.min.js"></script>
  <!-- -->
 </body>
 </html>
@@ -207,3 +208,4 @@ $(".timepicker").timepicker({
 <?php unset($_SESSION['detalle_prueba_cmt']); ?>
 <?php unset($_SESSION['detalle_plantilla']); ?>
 <?php unset($_SESSION['plantilla_requisicion']); ?>
+<?php unset($_SESSION['detalle_tratamiento_medico']); ?>

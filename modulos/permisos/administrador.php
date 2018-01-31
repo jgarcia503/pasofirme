@@ -195,4 +195,12 @@
 	'archivo' => 'sanidades/cvisita_medica.php',
 	'layout' => LAYOUT_DESKTOP
 	);
+	$conf['tratamiento'] = array(
+	'archivo' => 'sanidades/tratamiento.php',
+	'layout' => LAYOUT_DESKTOP
+	);
+	$conf['ctratamiento'] = array(
+	'archivo' => 'sanidades/ctratamiento.php',
+	'layout' => LAYOUT_DESKTOP
+	);
  ?>

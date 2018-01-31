@@ -60,6 +60,7 @@
               <li><a href="?mod=eventos_sanitarios">Eventos sanitarios</a></li>
               <li><a href="?mod=cmt">Pruebas CMT</a></li>
               <li><a href="?mod=visita_medica">Visita m&eacute;dica</a></li>
+              <li><a href="?mod=tratamiento">Tratamientos medicos</a></li>
             </ul>
           </li>
         </ul>
